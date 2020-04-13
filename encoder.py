@@ -158,11 +158,11 @@ class Encoder(nn.Module):
                                              torch.ones_like(posterior)*torch.std(posterior),distances), dim=1)                        
                         
                     else:
-                        #key = Variable(torch.zeros(1, self.opt.keySize))
+                        key = Variable(torch.zeros(1, self.opt.keySize))
                         in_edges = Variable(torch.zeros([1, len(lattice.edges[0])]), requires_grad=False)
 
                     # Caculate attention weights and multiply with matrix of edge features  
-                    weighted_in_edges = self.attention.forward(query=in_edges, key=in_edges, value=in_edges)           
+                    weighted_in_edges = self.attention.forward(query=in_edges, key=key, value=in_edges)           
    
             out_edges = []
 
@@ -193,9 +193,6 @@ class Encoder(nn.Module):
                 # For each outgoing edge calculate the hidden state
                 for each_edge in out_edges:
                     node_input = torch.cat((each_edge.view(1,-1), weighted_in_edges.view(1,-1)), 1)[0]
-                    #print(f'1 {node_input}')
-                    #node_input = torch.cat((node_input, node_input),0)
-                    #print(f'2 {node_input}')
                     hidden_state = self.forward_edge(node_input.view(1,-1))
                     node_outputs.append(hidden_state)
 

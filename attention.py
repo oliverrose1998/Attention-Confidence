@@ -13,7 +13,7 @@ class AddAttention(nn.Module):
     def __init__(self, input_size, hidden_size, num_layers,
                  initialization, use_bias=True):
         """Build multi-layer FC."""
-        super(Attention, self).__init__()
+        super(AddAttention, self).__init__()
         self.input_size = input_size
         self.hidden_size = hidden_size
         self.num_layers = num_layers

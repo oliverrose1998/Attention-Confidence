@@ -78,8 +78,14 @@ class Model(nn.Module):
 
         if self.opt.arc_combine_method == 'attention':
             #self.attention = MultiHeadedAttention(h=self.opt.attn_heads, d_model=hidden)
-            print(f'\n\nAttn_Input \n{self.opt.inputSize + self.opt.keySize}\n\n')
-            self.attention = MultiHeadedAttention(h=1, d_model=self.opt.inputSize + self.opt.keySize)
+            #self.attention = MultiHeadedAttention(h=1, d_model=self.opt.inputSize + self.opt.keySize)
+            print(self.opt.inputSize)
+            print(self.opt.keySize)
+            print('================')
+            self.attention = AddAttention(self.opt.inputSize + self.opt.keySize,
+                                       self.opt.attentionSize,
+                                       self.opt.attentionLayers, self.opt.init_word,
+                                       use_bias=True)
         else:
             self.attention = None
 
