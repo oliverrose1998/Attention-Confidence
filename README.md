@@ -1,30 +1,12 @@
-# Bi-Directional Lattice Recurrent Neural Network for Confidence Score Estimation
+# Attention mechansim for Confidence Score Estimation
 ### Uncertainty and confidence scores in sequence data
 
-This repo provides mechanisms for subword level information to be introduced into a Bi-directional Lattice Recurrent Neural Network (BiLatticeRNN). BiLatticeRNN is a generalisation of a BiLSTM such that it is able to operate on DAG-like structures such as lattice and confusion networks. In this source code, we use this framework to generate confidence score estimates for each word in the  lattice, confusion network or 1-best list. This is incredibly useful for automatic speech recognition (ASR) applications such as information retrieval, deletion detection, and machine translation. An improvement in Normalised Cross Entropy (NCE) and AUC (Precision-Recall) compared to the traditional word posterior confidence score estimate is achievable. By including grapheme features, such as duration and a grapheme embedding, improvements on a purely word-based implementation is possible.
-
-One-best sequences                  |  Confusion Networks
-:------------------------------:|:------------------------------:
-![onebest](fig/BiLSTM-PR.png)  |  ![lattice](fig/BiConfRNN-PR-allarcs.png)
+This repo provides mechanisms for subword level information to be introduced into an attention mechanism. It is able to operate on DAG-like structures such as lattice and confusion networks. In this source code, we use this framework to generate confidence score estimates for each word in the  lattice, confusion network or 1-best list. This is incredibly useful for automatic speech recognition (ASR) applications such as information retrieval, deletion detection, and machine translation. An improvement in Normalised Cross Entropy (NCE) and AUC (Precision-Recall) compared to the traditional word posterior confidence score estimate is achievable. 
 
 These results were generated on the CUED graphemic Georgian ASR system which was trained on the Georgian language pack from the BABEL project.
 
 
 This work is an extension of Bi-Directional Lattice Recurrent Neural Networks for Confidence Estimation as documented in:
-
->[Bi-Directional Lattice Recurrent Neural Networks for Confidence Estimation](https://arxiv.org/abs/1810.13024)
->
->*Qiujia Li\*, Preben Ness\*, Anton Ragni, Mark Gales* (\* indicates equal contribution)
->
->Submitted to ICASSP 2019
-
-The model presented in this paper provides significant improvements on confidence scores in terms of NCE and AUC. Precision-recall curves are shown below.
-
-one-best paths                  |  lattices
-:------------------------------:|:------------------------------:
-![onebest](fig/pr_onebest.png)  |  ![lattice](fig/pr_lattice.png)
-
-For more details on BiLatRNN, please refer to the [paper](https://arxiv.org/pdf/1810.13024.pdf) or the [thesis](http://liqiujia.com/papers/meng_thesis.pdf).
 
 ## Usage
 
