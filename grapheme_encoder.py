@@ -102,7 +102,7 @@ class GraphemeEncoder(nn.Module):
         self.initialisation = opt.init_grapheme
         self.use_bias = True
 
-        if opt.encoder_type == 'RNN':
+        if opt.grapheme_encoder == 'RNN':
             self.encoder = nn.RNN(
                 input_size=opt.grapheme_features,
                 hidden_size=self.hidden_size,
@@ -112,7 +112,7 @@ class GraphemeEncoder(nn.Module):
                 dropout=opt.encoding_dropout,
                 bias=True
             )
-        elif opt.encoder_type == 'LSTM':
+        elif opt.grapheme_encoder == 'LSTM':
             self.encoder = nn.LSTM(
                 input_size=opt.grapheme_features,
                 hidden_size=self.hidden_size,
@@ -122,7 +122,7 @@ class GraphemeEncoder(nn.Module):
                 dropout=opt.encoding_dropout,
                 bias=True
             )
-        elif opt.encoder_type == 'GRU':
+        elif opt.grapheme_encoder == 'GRU':
             self.encoder = nn.GRU(
                 input_size=opt.grapheme_features,
                 hidden_size=self.hidden_size,

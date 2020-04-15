@@ -49,7 +49,11 @@ class AddAttention(nn.Module):
         """ Additive Attention """
 
         # Concat context with hidden representations
-        output = torch.cat((query, key), dim=1)
+        #if key is not None:
+        #    output = torch.cat((query, key), dim=1)
+        #else:
+        output = query
+
         for layer in range(self.num_layers):
             fc = self.get_fc(layer)
             output = F.relu(fc(output))
@@ -87,14 +91,13 @@ class MultiHeadedAttention(nn.Module):
                              for l, x in zip(self.linear_layers, (query, key, value))]
 
         # 2) Apply attention on all the projected vectors in batch.
-        x, attn = self.attention(query, key, value, mask=mask, dropout=self.dropout)
+        x = self.attention(query, key, value, mask=mask, dropout=self.dropout)
 
         # 3) "Concat" using a view and apply a final linear.
         x = x.transpose(1, 2).contiguous().view(batch_size, -1, self.h * self.d_k)
+        x = self.output_linear(x)
 
-        return self.output_linear(x)
-
-
+        return x[:,0,:]
 
 class SDP_Attention(nn.Module):
     """

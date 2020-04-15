@@ -5,7 +5,8 @@
 """
 
 from attention import AddAttention, MultiHeadedAttention
-from encoder import Encoder
+from transformer import Transformer
+from outputlayer import OutputLayer
 from grapheme_encoder import LuongAttention, GraphemeEncoder
 from lstm import LSTM, LSTMCell
 
@@ -16,58 +17,6 @@ from torch.nn import functional as F
 from torch.nn import init
 
 
-class DNN_output(nn.Module):
-    """A module that defines multi-layer fully connected neural networks."""
-
-    def __init__(self, input_size, hidden_size, output_size, num_layers,
-                 initialization, use_bias=True, logit=False):
-        """Build multi-layer FC."""
-        super(DNN_output, self).__init__()
-        self.input_size = input_size
-        self.hidden_size = hidden_size
-        self.output_size = output_size
-        self.num_layers = num_layers
-        self.initialization = initialization
-        self.use_bias = use_bias
-        self.logit = logit
-
-        if num_layers > 0:
-            for layer in range(num_layers):
-                layer_input_size = input_size if layer == 0 else hidden_size
-                fc = nn.Linear(layer_input_size, hidden_size, bias=use_bias)
-                setattr(self, 'fc_{}'.format(layer), fc)
-            self.out = nn.Linear(hidden_size, output_size, bias=use_bias)
-        else:
-            self.out = nn.Linear(input_size, output_size, bias=use_bias)
-        self.reset_parameters()
-
-    def get_fc(self, layer):
-        """Get FC layer by layer number."""
-        return getattr(self, 'fc_{}'.format(layer))
-
-    def reset_parameters(self):
-        """Initialise parameters for all layers."""
-        init_method = getattr(init, self.initialization)
-        for layer in range(self.num_layers):
-            fc = self.get_fc(layer)
-            init_method(fc.weight.data)
-            if self.use_bias:
-                init.constant(fc.bias.data, val=0)
-        init_method(self.out.weight.data)
-        init.constant(self.out.bias.data, val=0)
-
-    def forward(self, x):
-        """Complete multi-layer DNN network."""
-        for layer in range(self.num_layers):
-            fc = self.get_fc(layer)
-            x = F.relu(fc(x))
-        output = self.out(x)
-        if self.logit:
-            return output
-        else:
-            return F.sigmoid(output)
-
-
 class Model(nn.Module):
     """Bidirectional LSTM model on lattices."""
 
@@ -76,18 +25,14 @@ class Model(nn.Module):
         nn.Module.__init__(self)
         self.opt = opt
 
-        if self.opt.arc_combine_method == 'attention':
+        if self.opt.transformer_attn == 'add':
+            self.attn = AddAttention(self.opt.inputSize + self.opt.keySize, self.opt.attnSize,
+                                       self.opt.attnLayers, self.opt.init_word, use_bias=True)
+        elif self.opt.transformer_attn == 'sdp':
             #self.attention = MultiHeadedAttention(h=self.opt.attn_heads, d_model=hidden)
-            #self.attention = MultiHeadedAttention(h=1, d_model=self.opt.inputSize + self.opt.keySize)
-            print(self.opt.inputSize)
-            print(self.opt.keySize)
-            print('================')
-            self.attention = AddAttention(self.opt.inputSize + self.opt.keySize,
-                                       self.opt.attentionSize,
-                                       self.opt.attentionLayers, self.opt.init_word,
-                                       use_bias=True)
+            self.attn = MultiHeadedAttention(h=1, d_model=self.opt.inputSize + self.opt.keySize)
         else:
-            self.attention = None
+            self.attn = None
 
         if self.opt.grapheme_combination != 'None':
             self.is_graphemic = True
@@ -112,19 +57,21 @@ class Model(nn.Module):
 
         num_directions = 2 if self.opt.bidirectional else 1
 
-        if self.opt.encoder_type == 'ATTENTION':
-            self.model_intermediate = Encoder(self.opt.inputSize, self.opt.hiddenSize, self.opt.hiddenSize,
-                                              self.opt.init_word, self.opt.nLSTMLayers, use_bias=True,
-                                              birdirectional=self.opt.bidirectional, attention=self.attention, 
-                                              attention_order=self.opt.attention_order, attention_key=self.opt.attention_key, 
-                                              dropout=self.opt.intermediate_dropout)
-        else:
-            self.model_intermediate = LSTM(LSTMCell, self.opt.inputSize, self.opt.hiddenSize, 
-                                         self.opt.nLSTMLayers, use_bias=True,
-                                         bidirectional=self.opt.bidirectional,
-                                         attention=self.attention)
+        if self.opt.encoder == 'TRANSFORMER':
+            self.model_encoder = Transformer(self.opt.inputSize, self.opt.keySize, self.opt.hiddenSize, self.opt.hiddenSize,
+                                              self.opt.init_word, self.opt.nEncoderLayers, use_bias=True,
+                                              birdirectional=self.opt.bidirectional, attn=self.attn, 
+                                              transformer_order=self.opt.transformer_order, attn_dmetric=self.opt.attn_dmetric, 
+                                              attn_key=self.opt.attn_key, 
+                                              dropout=self.opt.attn_dropout)
 
-        self.model_output = DNN_output(num_directions * self.opt.hiddenSize,
+        elif self.opt.encoder == 'RECURRENT':
+            self.model_encoder = LSTM(LSTMCell, self.opt.inputSize, self.opt.hiddenSize, 
+                                         self.opt.nEncoderLayers, use_bias=True,
+                                         bidirectional=self.opt.bidirectional,
+                                         attention=self.attn)
+
+        self.model_output = OutputLayer(num_directions * self.opt.hiddenSize,
                                       self.opt.linearSize, 1, self.opt.nFCLayers,
                                       self.opt.init_word, use_bias=True, logit=True)
 
@@ -149,8 +96,7 @@ class Model(nn.Module):
             reduced_grapheme_info = reduced_grapheme_info.squeeze(1)
             lattice.edges = torch.cat((lattice.edges, reduced_grapheme_info), dim=1)
 
-        # BiLSTM -> FC(relu) -> LayerOut (sigmoid if not logit)
-        output = self.model_intermediate.forward(lattice, self.opt.arc_combine_method)
+        output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
         output = self.model_output.forward(output)
         return output
 

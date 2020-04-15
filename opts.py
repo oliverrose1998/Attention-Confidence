@@ -31,10 +31,10 @@ class Opts():
         else:
             raise Exception('Not a valid lattice type')
 
-        # Customized parameters for the network
+        # Encoder and Output architecture 
         arch = self.args.arch.split('-')
         assert len(arch) == 4, 'bad architecture input argument'
-        self.args.nLSTMLayers = int(arch[0])
+        self.args.nEncoderLayers = int(arch[0])
         self.args.hiddenSize = int(arch[1])
         self.args.nFCLayers = int(arch[2])
         self.args.linearSize = int(arch[3])
@@ -52,11 +52,11 @@ class Opts():
             self.args.grapheme_features = 0
             self.args.grapheme_hidden_size = 0
         
-        # Attention mechanism architecture
-        attention_arch = self.args.grapheme_arch.split('-')
+        # Attention for transformer model architecture
+        transformer_arch = self.args.transformer_arch.split('-')
         assert len(grapheme_arch) == 2, 'bad grapheme model architecture input argument'
-        self.args.attentionLayers = int(attention_arch[0])
-        self.args.attentionSize = int(attention_arch[1])
+        self.args.attnLayers = int(transformer_arch[0])
+        self.args.attnSize = int(transformer_arch[1])
 
         # Customized parameters for dataset
         if 'onebest' in self.args.dataset:
@@ -90,11 +90,9 @@ class Opts():
             # Override implicit input size code above
             self.args.inputSize = self.args.forceInputSize
 
-        # Attention mechanism keys and input size
-        if self.args.attention_key == 'self':
-            self.args.keySize = 0
-        elif self.args.attention_key == 'dist':
-            self.args.keySize = 1
+        # Transformer attention keys and input size
+        if self.args.attn_dmetric == 'both':
+            self.args.keySize = 5
         else:
             self.args.keySize = 4
 
@@ -123,10 +121,10 @@ class Opts():
                             + '_' + 'D='+self.args.LRDecay \
                             + '-' + str(self.args.LRDParam) \
                             + '_' + str(lattice_type_tag) \
-                            + '_' + self.args.attention_arch \
-                            + '_' + 'o='+self.args.attention_order \
-                            + '_' + 'd='+str(self.args.intermediate_dropout) \
-                            + '_' + 'h='+str(self.args.attention_heads) \
+                            + '_' + self.args.transformer_arch \
+                            + '_' + 'o='+self.args.transformer_order \
+                            + '_' + 'd='+str(self.args.attn_dropout) \
+                            + '_' + 'h='+str(self.args.attn_heads) \
                             + '_' + self.args.suffix  
   
         if self.args.debug: 
@@ -145,6 +143,9 @@ class Opts():
                             help='Debug mode, only run 2 epochs and 1 thread')
         parser.add_argument('--manualSeed', default=1, type=int,
                             help='Manual seed')
+        parser.add_argument('--encoder', default='RECURRENT', type=str,
+                            help='The type of encoder to calcute the hidden stae for confidence estimation',
+                            choices=['RECURRENT','TRANSFORMER'])
         # Path options
         parser.add_argument('--rootDir', type=str, required=True,
                             help='path to experiment root directory')
@@ -174,7 +175,7 @@ class Opts():
         parser.add_argument('--epochNum', default=0, type=int,
                             help='0=retrain|-1=latest|-2=best',
                             choices=[0, -1, -2])
-        parser.add_argument('--batchSize', default=1, type=int,
+        parser.add_argument('--batchSize', default=32, type=int,
                             help='Mini-batch size')
         parser.add_argument('--saveOne', default=False, action="store_true",
                             help='Only preserve one saved model')
@@ -191,23 +192,23 @@ class Opts():
         parser.add_argument('--seq_length_stats', default=False, action="store_true",
                             help='Display a NCE/AUC values for binned sequence lengths')
         # Optimization options
-        parser.add_argument('--LR', default=0.05, type=float,
+        parser.add_argument('--LR', default=0.01, type=float,
                             help='Initial learning rate')
-        parser.add_argument('--LRDecay', default='none', type=str,
+        parser.add_argument('--LRDecay', default='newbob', type=str,
                             help='Learning rate decay method',
                             choices=['anneal', 'stepwise', 'newbob', 'none'])
         parser.add_argument('--LRDParam', default=0.5, type=float,
                             help='Param for learning rate decay')
-        parser.add_argument('--momentum', default=0.5, type=float,
+        parser.add_argument('--momentum', default=0.05, type=float,
                             help='Momentum')
         parser.add_argument('--weightDecay', default=1e-3, type=float,
                             help='Weight decay')
-        parser.add_argument('--clip', default=1.0, type=float,
+        parser.add_argument('--clip', default=10, type=float,
                             help='Gradient clipping')
         parser.add_argument('--optimizer', default='SGD', type=str,
                             help='Optimizer type',
                             choices=['SGD', 'Adam'])
-        # Word level model options
+        # Recurrent model options
         parser.add_argument('--init-word', default='kaiming_normal', type=str,
                             help='Initialisation method for linear layers',
                             choices=['uniform', 'normal',
@@ -215,10 +216,29 @@ class Opts():
                                      'kaiming_uniform', 'kaiming_normal'])
         parser.add_argument('--arch', default='3-64-1-64', type=str,
                             help='Model architecture: '\
-                                 'nLSTMLayer-LSTMSize-nFCLayer-nFCSize')
-        parser.add_argument('--arc_combine-method', default='mean', type=str,
+                                 'nEncoderlayer-EncoderSize-nFCLayer-nFCSize')
+        parser.add_argument('--arc_combine-method', default='attention', type=str,
                             help='method for combining edges',
                             choices=['mean', 'max', 'posterior', 'attention'])
+        # Transformer model options
+        parser.add_argument('--transformer_attn', default='add', type=str,
+                            choices=['add', 'sdp'],
+                            help='The order of the neighbours (distance of historical states) taken as input to the attention mechanism')
+        parser.add_argument('--transformer_order', default='all', type=str,
+                            choices=['zero','one','two','inf','all'],
+                            help='The order of the neighbours (distance of historical states) taken as input to the attention mechanism')
+        parser.add_argument('--transformer-arch', default='1-64', type=str,
+                            help='Attention model architecture: num_layers-layer_size')
+        parser.add_argument('--attn_dmetric', default='nodes', type=str,
+                            choices=['nodes','time','both'],
+                            help='The key used for the attention mechanism')
+        parser.add_argument('--attn_key', default='self', type=str,
+                            choices=['self','cur_arc'],
+                            help='The key used for the attention mechanism')
+        parser.add_argument('--attn_dropout', default=0, type=float,
+                            help='The amount of dropout to apply in the intermediate DNN stage')
+        parser.add_argument('--attn_heads', default=1, type=int,
+                            help='The number of attention heads used')
         # Grapheme level model options
         parser.add_argument('--init-grapheme', default='kaiming_normal', type=str,
                             help='Initialisation method for linear layers',
@@ -230,26 +250,13 @@ class Opts():
                             choices=['None', 'dot', 'mult', 'concat', 'scaled-dot', 'concat-enc-key'])
         parser.add_argument('--grapheme-encoding', default=False, action="store_true",
                             help='Use a bidirectional recurrent structure to encode the grapheme information')
-        parser.add_argument('--encoder-type', default='RNN', type=str,
+        parser.add_argument('--grapheme-encoder', default='RNN', type=str,
                             help='The type of bidirectional recurrent encoder to use for grapheme combination',
-                            choices=['RNN', 'GRU', 'LSTM', 'ATTENTION'])
+                            choices=['RNN', 'GRU', 'LSTM'])
         parser.add_argument('--encoding-dropout', default=0, type=float,
                             help='The amount of dropout to apply in the bidirectional grapheme encoding')
         parser.add_argument('--grapheme-arch', default='1-10', type=str,
                             help='Grapheme model architecture: num_layers-layer_size')
-        # Attention Mechanism options
-        parser.add_argument('--attention_order', default='one', type=str,
-                            choices=['zero','one','two','inf','all'],
-                            help='The order of the neighbours (distance of historical states) taken as input to the attention mechanism')
-        parser.add_argument('--attention-arch', default='1-64', type=str,
-                            help='Attention model architecture: num_layers-layer_size')
-        parser.add_argument('--attention_key', default='dist', type=str,
-                            choices=['self','dist','global','local'],
-                            help='The key used for the attention mechanism')
-        parser.add_argument('--intermediate_dropout', default=0, type=float,
-                            help='The amount of dropout to apply in the intermediate DNN stage')
-        parser.add_argument('--attention_heads', default=1, type=int,
-                            help='The number of attention heads used')
         # Naming options
         parser.add_argument('--suffix', default='LatticeRNN', type=str,
                             help='Suffix for saving the model')

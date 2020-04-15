@@ -37,6 +37,10 @@ class Lattice:
         self.edges = None
         self.mask = None
         self.matrix = None
+        self.start_times = None
+        self.end_times = None
+        self.has_times = False
+        self.lsf_lattices = None
         self.ignore = []
         self.is_grapheme = True if lattice_type == 'grapheme' else False
         self.load()
@@ -51,11 +55,18 @@ class Lattice:
         self.child_dict = data['child_2_parent'].item()
         self.parent_dict = data['parent_2_child'].item()
 
+        if 'lattices' in data.keys():
+            self.lsf_lattices = data['lattices'].item()
+        if 'start_times' in data.keys():
+            self.start_times = data['start_times']
+        if 'end_times' in data.keys():
+            self.end_times = data['end_times']
         if 'matrix' in data.keys():
             self.matrix = data['matrix']
-
         if self.is_grapheme:
             self.grapheme_data = data['grapheme_data']
+        if 'start_times' and 'end_times' in data.keys():
+            self.has_times = True
 
         # Backward compatibility
         try:
@@ -86,13 +97,14 @@ class Lattice:
         """ Reverse the graph """
         self.nodes.reverse()
         self.child_dict, self.parent_dict = self.parent_dict, self.child_dict
-        
+        self.start_times, self.end_times = self.end_times, self.start_times 
+            
         dim = self.matrix.shape[0]
         matrix = np.zeros([dim,dim])
         for ind, row in enumerate(self.matrix):
             matrix[dim-ind-1,:] = row[::-1]
-        self.matrix = matrix 
-            
+        self.matrix = matrix        
+
     def feature_dim(self):
         return self.edges.shape[1]
 
