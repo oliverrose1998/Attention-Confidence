@@ -7,26 +7,28 @@ from torch.nn import init
 class OutputLayer(nn.Module):
     """A module that defines multi-layer fully connected neural networks."""
 
-    def __init__(self, input_size, hidden_size, output_size, num_layers,
-                 initialization, use_bias=True, logit=False):
-        """Build multi-layer FC."""
-        super(OutputLayer, self).__init__()
-        self.input_size = input_size
-        self.hidden_size = hidden_size
-        self.output_size = output_size
-        self.num_layers = num_layers
-        self.initialization = initialization
-        self.use_bias = use_bias
-        self.logit = logit
+    def __init__(self, opt):
+        nn.Module.__init__(self)
 
-        if num_layers > 0:
-            for layer in range(num_layers):
-                layer_input_size = input_size if layer == 0 else hidden_size
-                fc = nn.Linear(layer_input_size, hidden_size, bias=use_bias)
+        """Build multi-layer FC."""
+        #super(OutputLayer, self).__init__()
+        num_directions = 2 if opt.bidirectional else 1
+        self.input_size = num_directions * opt.hiddenSize
+        self.hidden_size = opt.linearSize
+        self.output_size = 1
+        self.num_layers = opt.nFCLayers
+        self.initialization = opt.init_word
+        self.use_bias = True
+        self.logit = True
+
+        if self.num_layers > 0:
+            for layer in range(self.num_layers):
+                layer_input_size = self.input_size if layer == 0 else self.hidden_size
+                fc = nn.Linear(layer_input_size, self.hidden_size, bias=self.use_bias)
                 setattr(self, 'fc_{}'.format(layer), fc)
-            self.out = nn.Linear(hidden_size, output_size, bias=use_bias)
+            self.out = nn.Linear(self.hidden_size, self.output_size, bias=self.use_bias)
         else:
-            self.out = nn.Linear(input_size, output_size, bias=use_bias)
+            self.out = nn.Linear(self.input_size, self.output_size, bias=self.use_bias)
         self.reset_parameters()
 
     def get_fc(self, layer):

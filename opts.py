@@ -221,14 +221,14 @@ class Opts():
                             help='method for combining edges',
                             choices=['mean', 'max', 'posterior', 'attention'])
         # Transformer model options
-        parser.add_argument('--transformer_attn', default='add', type=str,
-                            choices=['add', 'sdp'],
-                            help='The order of the neighbours (distance of historical states) taken as input to the attention mechanism')
         parser.add_argument('--transformer_order', default='all', type=str,
                             choices=['zero','one','two','inf','all'],
                             help='The order of the neighbours (distance of historical states) taken as input to the attention mechanism')
         parser.add_argument('--transformer-arch', default='1-64', type=str,
                             help='Attention model architecture: num_layers-layer_size')
+        parser.add_argument('--attn_type', default='None', type=str,
+                            help='The method to use for grapheme combination',
+                            choices=['None', 'dot', 'mult', 'concat', 'scaled-dot', 'concat-enc-key'])
         parser.add_argument('--attn_dmetric', default='nodes', type=str,
                             choices=['nodes','time','both'],
                             help='The key used for the attention mechanism')

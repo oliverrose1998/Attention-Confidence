@@ -4,11 +4,9 @@
     * If requested, the grapheme encoder is added to the model.
 """
 
-from attention import AddAttention, MultiHeadedAttention
-from transformer import Transformer
 from outputlayer import OutputLayer
-from grapheme_encoder import LuongAttention, GraphemeEncoder
-from lstm import LSTM, LSTMCell
+from recurrent_encoder import LSTM
+from transformer_encoder import Transformer
 
 import numpy as np
 import torch
@@ -24,15 +22,6 @@ class Model(nn.Module):
         """Basic model building blocks."""
         nn.Module.__init__(self)
         self.opt = opt
-
-        if self.opt.transformer_attn == 'add':
-            self.attn = AddAttention(self.opt.inputSize + self.opt.keySize, self.opt.attnSize,
-                                       self.opt.attnLayers, self.opt.init_word, use_bias=True)
-        elif self.opt.transformer_attn == 'sdp':
-            #self.attention = MultiHeadedAttention(h=self.opt.attn_heads, d_model=hidden)
-            self.attn = MultiHeadedAttention(h=1, d_model=self.opt.inputSize + self.opt.keySize)
-        else:
-            self.attn = None
 
         if self.opt.grapheme_combination != 'None':
             self.is_graphemic = True
@@ -55,25 +44,13 @@ class Model(nn.Module):
         else:
             self.is_graphemic = False
 
-        num_directions = 2 if self.opt.bidirectional else 1
-
         if self.opt.encoder == 'TRANSFORMER':
-            self.model_encoder = Transformer(self.opt.inputSize, self.opt.keySize, self.opt.hiddenSize, self.opt.hiddenSize,
-                                              self.opt.init_word, self.opt.nEncoderLayers, use_bias=True,
-                                              birdirectional=self.opt.bidirectional, attn=self.attn, 
-                                              transformer_order=self.opt.transformer_order, attn_dmetric=self.opt.attn_dmetric, 
-                                              attn_key=self.opt.attn_key, 
-                                              dropout=self.opt.attn_dropout)
+            self.model_encoder = Transformer(self.opt)
 
         elif self.opt.encoder == 'RECURRENT':
-            self.model_encoder = LSTM(LSTMCell, self.opt.inputSize, self.opt.hiddenSize, 
-                                         self.opt.nEncoderLayers, use_bias=True,
-                                         bidirectional=self.opt.bidirectional,
-                                         attention=self.attn)
+            self.model_encoder = LSTM(self.opt)
 
-        self.model_output = OutputLayer(num_directions * self.opt.hiddenSize,
-                                      self.opt.linearSize, 1, self.opt.nFCLayers,
-                                      self.opt.init_word, use_bias=True, logit=True)
+        self.model_output = OutputLayer(self.opt)
 
     def forward(self, lattice):
         """Forward pass through the model."""
