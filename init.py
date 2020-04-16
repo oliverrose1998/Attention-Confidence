@@ -1,6 +1,6 @@
 """Model setup."""
 
-from model import create_model
+from model.model import create_model
 import os
 import torch
 import utils

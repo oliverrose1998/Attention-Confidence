@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Main function for training and testing."""
 
-import opts, init, checkpoints, criterion, train, dataloader
+import opts, train, dataloader, utils, evaluation, plot
+import init, checkpoints, criterion
 import numpy as np
 import os
 import sys
 import torch
 from torch.nn import functional as F
-import utils, evaluation, plot
 
 
 def main():
