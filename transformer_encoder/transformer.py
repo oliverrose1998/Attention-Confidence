@@ -43,8 +43,9 @@ class Transformer(nn.Module):
         self.attn_key = opt.attn_key
         self.attn_dmetric = opt.attn_dmetric
         self.attn = Attention(attn_type=opt.attn_type, 
-                               num_features=opt.inputSize+opt.keySize, 
-                               initialisation=opt.init_grapheme)
+                              attn_heads=opt.attn_heads,
+                              num_features=opt.inputSize+opt.keySize, 
+                              initialisation=opt.init_grapheme)
 
         # Intermediate architecure
         if self.num_layers > 0:
@@ -102,10 +103,6 @@ class Transformer(nn.Module):
         index = -1
         node_outputs = []
       
-        if self.attn_dmetric is not "nodes":
-            if lattice.has_times == False:
-                raise Exception("Lattice does not contain time information required for the key")
-
         # For each node in the lattice
         for node_index, each_node in enumerate(lattice.nodes):
  
