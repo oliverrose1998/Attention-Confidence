@@ -60,7 +60,7 @@ class Attention(torch.nn.Module):
         self.attn_type = attn_type
         self.initialisation = initialisation
         self.use_bias = True
-        self.h = 1
+        self.h = 4
         self.d = self.num_features // self.h
 
         self.inlinear = nn.ModuleList([nn.Linear(self.num_features, self.num_features, self.use_bias) for _ in range(3)])
@@ -85,18 +85,18 @@ class Attention(torch.nn.Module):
 
     def dot_score(self, key, query):
         """ Dot product similarity function """
-        return torch.sum(key * query, dim=1).expand(self.h, 1,-1)
+        return torch.sum(key * query, dim=-1).view(self.h, 1, -1)
 
     def mult_score(self, key, query):
         """ Multiplicative similarity function (also called general) """
         output = self.attn(query)
-        return torch.sum(key * output, dim=-1).expand(self.h, 1, -1)
+        return torch.sum(key * output, dim=-1).view(self.h, 1, -1)
 
     def concat_score(self, key, query):
         """ Concatinative similarity function (also called additive) """
         # Concat context with hidden representation
         #output = torch.cat((query, key), dim=1)
-        output = self.out(query).expand(self.h, 1, -1)
+        output = self.out(query).view(self.h, 1, -1)
         return F.tanh(output)
 
     def forward(self, key, query, value):
@@ -125,7 +125,6 @@ class Attention(torch.nn.Module):
         # The context is the result of the weighted summation
         context = torch.bmm(alpha, value)
         context = context.transpose(0, 1).contiguous().view(-1, self.num_features)
-
         return context
 
     def initialise_parameters(self):
