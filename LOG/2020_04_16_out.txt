@@ -1,0 +1,1343 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Thu Apr 16 16:11:05 BST 2020
+  0%|          | 0/291 [00:00<?, ?it/s][38;5;108m==> All options are displayed below:[0m
+    --debug               False
+    --manualSeed          1
+    --encoder             TRANSFORMER
+    --rootDir             ../data
+    --dataset             dev-grapheme-mapped-one-cn
+    --target              target_overlap_0.1
+    --nThreads            10
+    --trainPctg           1.0
+    --shuffle             True
+    --subtrain            False
+    --forceInputSize      -1
+    --lattice_type        word
+    --grapheme_features   0
+    --nEpochs             25
+    --epochNum            0
+    --batchSize           32
+    --saveOne             False
+    --valOnly             False
+    --testOnly            False
+    --onebest             True
+    --test_epochs         True
+    --attention_stats     False
+    --seq_length_stats    False
+    --LR                  0.01
+    --LRDecay             newbob
+    --LRDParam            0.5
+    --momentum            0.05
+    --weightDecay         0.001
+    --clip                10
+    --optimizer           SGD
+    --init_word           kaiming_normal
+    --arch                3-64-1-64
+    --arc_combine_method  attention
+    --transformer_order   all
+    --transformer_arch    1-64
+    --attn_type           mult
+    --attn_dmetric        nodes
+    --attn_key            self
+    --attn_dropout        0
+    --attn_heads          1
+    --init_grapheme       kaiming_normal
+    --grapheme_combinationNone
+    --grapheme_encoding   False
+    --grapheme_encoder    RNN
+    --encoding_dropout    0
+    --grapheme_arch       1-10
+    --suffix              temp
+    --data                ../data/dev-grapheme-mapped-one-cn
+    --model               ../data/exp
+    --grapheme_hidden_size0
+    --nEncoderLayers      3
+    --hiddenSize          64
+    --nFCLayers           1
+    --linearSize          64
+    --bidirectional       True
+    --grapheme_num_layers 1
+    --grapheme_bidirectionalTrue
+    --attnLayers          1
+    --attnSize            64
+    --inputSize           52
+    --keySize             4
+    --hashKey             dev-grapheme-mapped-one-cn_3-64-1-64_attention_L=0.01_M=0.05_S=32_O=SGD_D=newbob-0.5_W_1-64_o=all_d=0_h=1_temp
+    --resume              ../data/exp/dev-grapheme-mapped-one-cn_3-64-1-64_attention_L=0.01_M=0.05_S=32_O=SGD_D=newbob-0.5_W_1-64_o=all_d=0_h=1_temp
+[38;5;108m==> Setting up data loader[0m
+    => Creating data loader for train.
+    => Creating data loader for cv.
+    => Creating data loader for test.
+[38;5;108m==> Checking checkpoints[0m
+    => No checkpoint to load. Retrain the model.
+[38;5;108m==> Setting up model and criterion[0m
+    => Creating new model
+    => Creating new criterion
+[38;5;108m==> Loading trainer[0m
+[38;5;108m==> Training:[0m
+    => Epoch 1
+Process Process-25:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-15:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-19:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-17:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-20:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-16:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-30:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-37:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-18:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-29:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-21:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-12:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-14:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-31:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-34:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-24:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-26:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-28:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-40:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-23:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-27:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-36:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-41:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-32:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-33:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-39:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-13:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-42:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-35:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-43:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-38:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-22:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Traceback (most recent call last):
+  File "main.py", line 165, in <module>
+    main()
+  File "main.py", line 135, in main
+    _ = trainer.train(train_loader, epoch, val_loss)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 239, in train
+    batch_loss += result[0][0]
+TypeError: 'NoneType' object is not subscriptable
+/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-ak2132/MLenv/lib/python3.6/site-packages/torch/serialization.py:325: SourceChangeWarning: source code of class 'model.transformer_encoder.attention.Attention' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+  0%|          | 0/38 [00:00<?, ?it/s][38;5;108m==> All options are displayed below:[0m
+    --debug               False
+    --manualSeed          1
+    --encoder             TRANSFORMER
+    --rootDir             ../data
+    --dataset             dev-grapheme-mapped-one-cn
+    --target              target_overlap_0.1
+    --nThreads            10
+    --trainPctg           1.0
+    --shuffle             True
+    --subtrain            False
+    --forceInputSize      -1
+    --lattice_type        word
+    --grapheme_features   0
+    --nEpochs             25
+    --epochNum            -2
+    --batchSize           32
+    --saveOne             False
+    --valOnly             False
+    --testOnly            True
+    --onebest             True
+    --test_epochs         True
+    --attention_stats     True
+    --seq_length_stats    True
+    --LR                  0.01
+    --LRDecay             newbob
+    --LRDParam            0.5
+    --momentum            0.05
+    --weightDecay         0.001
+    --clip                10
+    --optimizer           SGD
+    --init_word           kaiming_normal
+    --arch                3-64-1-64
+    --arc_combine_method  attention
+    --transformer_order   all
+    --transformer_arch    1-64
+    --attn_type           mult
+    --attn_dmetric        nodes
+    --attn_key            self
+    --attn_dropout        0
+    --attn_heads          1
+    --init_grapheme       kaiming_normal
+    --grapheme_combinationNone
+    --grapheme_encoding   False
+    --grapheme_encoder    RNN
+    --encoding_dropout    0
+    --grapheme_arch       1-10
+    --suffix              temp
+    --data                ../data/dev-grapheme-mapped-one-cn
+    --model               ../data/exp
+    --grapheme_hidden_size0
+    --nEncoderLayers      3
+    --hiddenSize          64
+    --nFCLayers           1
+    --linearSize          64
+    --bidirectional       True
+    --grapheme_num_layers 1
+    --grapheme_bidirectionalTrue
+    --attnLayers          1
+    --attnSize            64
+    --inputSize           52
+    --keySize             4
+    --hashKey             dev-grapheme-mapped-one-cn_3-64-1-64_attention_L=0.01_M=0.05_S=32_O=SGD_D=newbob-0.5_W_1-64_o=all_d=0_h=1_temp
+    --resume              ../data/exp/dev-grapheme-mapped-one-cn_3-64-1-64_attention_L=0.01_M=0.05_S=32_O=SGD_D=newbob-0.5_W_1-64_o=all_d=0_h=1_temp
+[38;5;108m==> Setting up data loader[0m
+    => Creating data loader for train.
+    => Creating data loader for cv.
+    => Creating data loader for test.
+[38;5;108m==> Checking checkpoints[0m
+    => Loading the best checkpoint.
+[38;5;108m==> Setting up model and criterion[0m
+    => Resuming model from ../data/exp/dev-grapheme-mapped-one-cn_3-64-1-64_attention_L=0.01_M=0.05_S=32_O=SGD_D=newbob-0.5_W_1-64_o=all_d=0_h=1_temp/model_2.pth
+    => Resuming optim_state from ../data/exp/dev-grapheme-mapped-one-cn_3-64-1-64_attention_L=0.01_M=0.05_S=32_O=SGD_D=newbob-0.5_W_1-64_o=all_d=0_h=1_temp/optim_state_2.pth
+    => Resuming criterion from ../data/exp/dev-grapheme-mapped-one-cn_3-64-1-64_attention_L=0.01_M=0.05_S=32_O=SGD_D=newbob-0.5_W_1-64_o=all_d=0_h=1_temp/criterion_2.pth
+[38;5;108m==> Loading trainer[0m
+    Previous best loss: [38;5;108m0.47212[0m
+[38;5;108m==> Testing:[0m
+    => Epoch 2
+Process Process-12:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-13:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-14:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-16:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-15:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-17:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-18:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-19:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-20:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-21:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-22:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-23:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-24:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-25:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-26:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-27:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-28:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-29:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-30:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-31:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-32:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-33:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-34:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-36:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-37:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-35:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-38:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-39:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-40:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-41:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-42:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Process Process-43:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 146, in forward_one_lattice
+    output = self.model.forward(lattice)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/model.py", line 76, in forward
+    output = self.model_encoder.forward(lattice, self.opt.arc_combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 233, in forward
+    attention_method=combine_method)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/transformer.py", line 186, in forward_lattice
+    weighted_in_edges  = self.attn.forward(query=in_edges, key=in_edges, value=in_edges)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/model/transformer_encoder/attention.py", line 84, in forward
+    context = torch.bmm(alpha, value)
+RuntimeError: dimension out of range (expected to be in range of [-2, 1], but got 2)
+Traceback (most recent call last):
+  File "main.py", line 165, in <module>
+    main()
+  File "main.py", line 53, in main
+    _, prediction, reference, post , seq_length = trainer.test(test_loader, start_epoch-1)
+  File "/home/babel/BABEL_OP3_404/releaseB/exp-graphemic-obr22/Attention-Confidence/train.py", line 354, in test
+    batch_loss += result[0][0]
+TypeError: 'NoneType' object is not subscriptable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Thu Apr 16 16:12:40 BST 2020
+  0%|          | 0/291 [00:00<?, ?it/s][38;5;108m==> All options are displayed below:[0m
+    --debug               False
+    --manualSeed          1
+    --encoder             TRANSFORMER
+    --rootDir             ../data
+    --dataset             dev-grapheme-mapped-one-cn
+    --target              target_overlap_0.1
+    --nThreads            10
+    --trainPctg           1.0
+    --shuffle             True
+    --subtrain            False
+    --forceInputSize      -1
+    --lattice_type        word
+    --grapheme_features   0
+    --nEpochs             25
+    --epochNum            0
+    --batchSize           32
+    --saveOne             False
+    --valOnly             False
+    --testOnly            False
+    --onebest             True
+    --test_epochs         True
+    --attention_stats     False
+    --seq_length_stats    False
+    --LR                  0.01
+    --LRDecay             newbob
+    --LRDParam            0.5
+    --momentum            0.05
+    --weightDecay         0.001
+    --clip                10
+    --optimizer           SGD
+    --init_word           kaiming_normal
+    --arch                3-64-1-64
+    --arc_combine_method  attention
+    --transformer_order   all
+    --transformer_arch    1-64
+    --attn_type           mult
+    --attn_dmetric        nodes
+    --attn_key            self
+    --attn_dropout        0
+    --attn_heads          1
+    --init_grapheme       kaiming_normal
+    --grapheme_combinationNone
+    --grapheme_encoding   False
+    --grapheme_encoder    RNN
+    --encoding_dropout    0
+    --grapheme_arch       1-10
+    --suffix              temp
+    --data                ../data/dev-grapheme-mapped-one-cn
+    --model               ../data/exp
+    --grapheme_hidden_size0
+    --nEncoderLayers      3
+    --hiddenSize          64
+    --nFCLayers           1
+    --linearSize          64
+    --bidirectional       True
+    --grapheme_num_layers 1
+    --grapheme_bidirectionalTrue
+    --attnLayers          1
+    --attnSize            64
+    --inputSize           52
+    --keySize             4
+    --hashKey             dev-grapheme-mapped-one-cn_3-64-1-64_attention_L=0.01_M=0.05_S=32_O=SGD_D=newbob-0.5_W_1-64_o=all_d=0_h=1_temp
+    --resume              ../data/exp/dev-grapheme-mapped-one-cn_3-64-1-64_attention_L=0.01_M=0.05_S=32_O=SGD_D=newbob-0.5_W_1-64_o=all_d=0_h=1_temp
+[38;5;108m==> Setting up data loader[0m
+    => Creating data loader for train.
+    => Creating data loader for cv.
+    => Creating data loader for test.
+[38;5;108m==> Checking checkpoints[0m
+    => No checkpoint to load. Retrain the model.
+[38;5;108m==> Setting up model and criterion[0m
+    => Creating new model
+    => Creating new criterion
+[38;5;108m==> Loading trainer[0m
+[38;5;108m==> Training:[0m
+    => Epoch 1
+       Train:   0%|          | 0/291 [00:01<?, ?it/s]       Train:   0%|          | 0/291 [00:01<?, ?it/s, allarc=0.7436, allarcAvg=0.7436, onebest=0.7436, onebestAvg=0.7436, lr=0.01000]       Train:   0%|          | 1/291 [00:01<05:21,  1.11s/it, allarc=0.7436, allarcAvg=0.7436, onebest=0.7436, onebestAvg=0.7436, lr=0.01000]       Train:   0%|          | 1/291 [00:01<06:57,  1.44s/it, allarc=0.7436, allarcAvg=0.7436, onebest=0.7436, onebestAvg=0.7436, lr=0.01000]       Train:   0%|          | 1/291 [00:01<06:57,  1.44s/it, allarc=0.6909, allarcAvg=0.7183, onebest=0.6909, onebestAvg=0.7183, lr=0.01000]       Train:   1%|          | 2/291 [00:01<03:27,  1.39it/s, allarc=0.6909, allarcAvg=0.7183, onebest=0.6909, onebestAvg=0.7183, lr=0.01000]       Train:   1%|          | 2/291 [00:01<04:20,  1.11it/s, allarc=0.6909, allarcAvg=0.7183, onebest=0.6909, onebestAvg=0.7183, lr=0.01000]       Train:   1%|          | 2/291 [00:01<04:20,  1.11it/s, allarc=0.6698, allarcAvg=0.6990, onebest=0.6698, onebestAvg=0.6990, lr=0.01000]       Train:   1%|          | 3/291 [00:01<02:53,  1.66it/s, allarc=0.6698, allarcAvg=0.6990, onebest=0.6698, onebestAvg=0.6990, lr=0.01000]       Train:   1%|          | 3/291 [00:02<03:33,  1.35it/s, allarc=0.6698, allarcAvg=0.6990, onebest=0.6698, onebestAvg=0.6990, lr=0.01000]       Train:   1%|          | 3/291 [00:02<03:33,  1.35it/s, allarc=0.6108, allarcAvg=0.6728, onebest=0.6108, onebestAvg=0.6728, lr=0.01000]       Train:   1%|▏         | 4/291 [00:02<02:39,  1.80it/s, allarc=0.6108, allarcAvg=0.6728, onebest=0.6108, onebestAvg=0.6728, lr=0.01000]       Train:   1%|▏         | 4/291 [00:02<02:55,  1.64it/s, allarc=0.6108, allarcAvg=0.6728, onebest=0.6108, onebestAvg=0.6728, lr=0.01000]       Train:   1%|▏         | 4/291 [00:02<02:55,  1.64it/s, allarc=0.6054, allarcAvg=0.6613, onebest=0.6054, onebestAvg=0.6613, lr=0.01000]       Train:   2%|▏         | 5/291 [00:02<02:19,  2.05it/s, allarc=0.6054, allarcAvg=0.6613, onebest=0.6054, onebestAvg=0.6613, lr=0.01000]       Train:   2%|▏         | 5/291 [00:02<02:33,  1.87it/s, allarc=0.6054, allarcAvg=0.6613, onebest=0.6054, onebestAvg=0.6613, lr=0.01000]       Train:   2%|▏         | 5/291 [00:02<02:33,  1.87it/s, allarc=0.5844, allarcAvg=0.6493, onebest=0.5844, onebestAvg=0.6493, lr=0.01000]       Train:   2%|▏         | 6/291 [00:02<02:07,  2.24it/s, allarc=0.5844, allarcAvg=0.6493, onebest=0.5844, onebestAvg=0.6493, lr=0.01000]       Train:   2%|▏         | 6/291 [00:02<02:16,  2.08it/s, allarc=0.5844, allarcAvg=0.6493, onebest=0.5844, onebestAvg=0.6493, lr=0.01000]       Train:   2%|▏         | 6/291 [00:02<02:16,  2.08it/s, allarc=0.5539, allarcAvg=0.6349, onebest=0.5539, onebestAvg=0.6349, lr=0.01000]       Train:   2%|▏         | 7/291 [00:02<01:56,  2.43it/s, allarc=0.5539, allarcAvg=0.6349, onebest=0.5539, onebestAvg=0.6349, lr=0.01000]       Train:   2%|▏         | 7/291 [00:03<02:08,  2.21it/s, allarc=0.5539, allarcAvg=0.6349, onebest=0.5539, onebestAvg=0.6349, lr=0.01000]       Train:   2%|▏         | 7/291 [00:03<02:08,  2.21it/s, allarc=0.5785, allarcAvg=0.6274, onebest=0.5785, onebestAvg=0.6274, lr=0.01000]       Train:   3%|▎         | 8/291 [00:03<01:52,  2.52it/s, allarc=0.5785, allarcAvg=0.6274, onebest=0.5785, onebestAvg=0.6274, lr=0.01000]       Train:   3%|▎         | 8/291 [00:03<02:00,  2.35it/s, allarc=0.5785, allarcAvg=0.6274, onebest=0.5785, onebestAvg=0.6274, lr=0.01000]       Train:   3%|▎         | 8/291 [00:03<02:00,  2.35it/s, allarc=0.6914, allarcAvg=0.6339, onebest=0.6914, onebestAvg=0.6339, lr=0.01000]       Train:   3%|▎         | 9/291 [00:03<01:46,  2.64it/s, allarc=0.6914, allarcAvg=0.6339, onebest=0.6914, onebestAvg=0.6339, lr=0.01000]       Train:   3%|▎         | 9/291 [00:03<01:54,  2.47it/s, allarc=0.6914, allarcAvg=0.6339, onebest=0.6914, onebestAvg=0.6339, lr=0.01000]       Train:   3%|▎         | 9/291 [00:03<01:54,  2.47it/s, allarc=0.6164, allarcAvg=0.6319, onebest=0.6164, onebestAvg=0.6319, lr=0.01000]       Train:   3%|▎         | 10/291 [00:03<01:42,  2.74it/s, allarc=0.6164, allarcAvg=0.6319, onebest=0.6164, onebestAvg=0.6319, lr=0.01000]       Train:   3%|▎         | 10/291 [00:03<01:47,  2.60it/s, allarc=0.6164, allarcAvg=0.6319, onebest=0.6164, onebestAvg=0.6319, lr=0.01000]       Train:   3%|▎         | 10/291 [00:03<01:47,  2.60it/s, allarc=0.5981, allarcAvg=0.6294, onebest=0.5981, onebestAvg=0.6294, lr=0.01000]       Train:   4%|▍         | 11/291 [00:03<01:37,  2.86it/s, allarc=0.5981, allarcAvg=0.6294, onebest=0.5981, onebestAvg=0.6294, lr=0.01000]       Train:   4%|▍         | 11/291 [00:04<01:46,  2.63it/s, allarc=0.5981, allarcAvg=0.6294, onebest=0.5981, onebestAvg=0.6294, lr=0.01000]       Train:   4%|▍         | 11/291 [00:04<01:46,  2.63it/s, allarc=0.7842, allarcAvg=0.6419, onebest=0.7842, onebestAvg=0.6419, lr=0.01000]       Train:   4%|▍         | 12/291 [00:04<01:37,  2.87it/s, allarc=0.7842, allarcAvg=0.6419, onebest=0.7842, onebestAvg=0.6419, lr=0.01000]       Train:   4%|▍         | 12/291 [00:04<01:42,  2.73it/s, allarc=0.7842, allarcAvg=0.6419, onebest=0.7842, onebestAvg=0.6419, lr=0.01000]       Train:   4%|▍         | 12/291 [00:04<01:42,  2.73it/s, allarc=0.6299, allarcAvg=0.6407, onebest=0.6299, onebestAvg=0.6407, lr=0.01000]       Train:   4%|▍         | 13/291 [00:04<01:34,  2.96it/s, allarc=0.6299, allarcAvg=0.6407, onebest=0.6299, onebestAvg=0.6407, lr=0.01000]       Train:   4%|▍         | 13/291 [00:04<01:38,  2.83it/s, allarc=0.6299, allarcAvg=0.6407, onebest=0.6299, onebestAvg=0.6407, lr=0.01000]       Train:   4%|▍         | 13/291 [00:04<01:38,  2.83it/s, allarc=0.6202, allarcAvg=0.6397, onebest=0.6202, onebestAvg=0.6397, lr=0.01000]       Train:   5%|▍         | 14/291 [00:04<01:30,  3.05it/s, allarc=0.6202, allarcAvg=0.6397, onebest=0.6202, onebestAvg=0.6397, lr=0.01000]       Train:   5%|▍         | 14/291 [00:04<01:34,  2.92it/s, allarc=0.6202, allarcAvg=0.6397, onebest=0.6202, onebestAvg=0.6397, lr=0.01000]       Train:   5%|▍         | 14/291 [00:04<01:34,  2.92it/s, allarc=0.5413, allarcAvg=0.6319, onebest=0.5413, onebestAvg=0.6319, lr=0.01000]       Train:   5%|▌         | 15/291 [00:04<01:28,  3.13it/s, allarc=0.5413, allarcAvg=0.6319, onebest=0.5413, onebestAvg=0.6319, lr=0.01000]       Train:   5%|▌         | 15/291 [00:04<01:31,  3.01it/s, allarc=0.5413, allarcAvg=0.6319, onebest=0.5413, onebestAvg=0.6319, lr=0.01000]       Train:   5%|▌         | 15/291 [00:04<01:31,  3.01it/s, allarc=0.5503, allarcAvg=0.6273, onebest=0.5503, onebestAvg=0.6273, lr=0.01000]       Train:   5%|▌         | 16/291 [00:04<01:25,  3.21it/s, allarc=0.5503, allarcAvg=0.6273, onebest=0.5503, onebestAvg=0.6273, lr=0.01000]       Train:   5%|▌         | 16/291 [00:05<01:29,  3.07it/s, allarc=0.5503, allarcAvg=0.6273, onebest=0.5503, onebestAvg=0.6273, lr=0.01000]       Train:   5%|▌         | 16/291 [00:05<01:29,  3.07it/s, allarc=0.5660, allarcAvg=0.6220, onebest=0.5660, onebestAvg=0.6220, lr=0.01000]       Train:   6%|▌         | 17/291 [00:05<01:24,  3.26it/s, allarc=0.5660, allarcAvg=0.6220, onebest=0.5660, onebestAvg=0.6220, lr=0.01000]       Train:   6%|▌         | 17/291 [00:05<01:28,  3.11it/s, allarc=0.5660, allarcAvg=0.6220, onebest=0.5660, onebestAvg=0.6220, lr=0.01000]       Train:   6%|▌         | 17/291 [00:05<01:28,  3.11it/s, allarc=0.4971, allarcAvg=0.6158, onebest=0.4971, onebestAvg=0.6158, lr=0.01000]       Train:   6%|▌         | 18/291 [00:05<01:22,  3.29it/s, allarc=0.4971, allarcAvg=0.6158, onebest=0.4971, onebestAvg=0.6158, lr=0.01000]       Train:   6%|▌         | 18/291 [00:05<01:26,  3.15it/s, allarc=0.4971, allarcAvg=0.6158, onebest=0.4971, onebestAvg=0.6158, lr=0.01000]       Train:   6%|▌         | 18/291 [00:05<01:26,  3.15it/s, allarc=0.5301, allarcAvg=0.6096, onebest=0.5301, onebestAvg=0.6096, lr=0.01000]       Train:   7%|▋         | 19/291 [00:05<01:21,  3.33it/s, allarc=0.5301, allarcAvg=0.6096, onebest=0.5301, onebestAvg=0.6096, lr=0.01000]       Train:   7%|▋         | 19/291 [00:05<01:25,  3.17it/s, allarc=0.5301, allarcAvg=0.6096, onebest=0.5301, onebestAvg=0.6096, lr=0.01000]       Train:   7%|▋         | 19/291 [00:05<01:25,  3.17it/s, allarc=0.5225, allarcAvg=0.6052, onebest=0.5225, onebestAvg=0.6052, lr=0.01000]       Train:   7%|▋         | 20/291 [00:05<01:21,  3.34it/s, allarc=0.5225, allarcAvg=0.6052, onebest=0.5225, onebestAvg=0.6052, lr=0.01000]       Train:   7%|▋         | 20/291 [00:06<01:25,  3.18it/s, allarc=0.5225, allarcAvg=0.6052, onebest=0.5225, onebestAvg=0.6052, lr=0.01000]       Train:   7%|▋         | 20/291 [00:06<01:25,  3.18it/s, allarc=0.5688, allarcAvg=0.6037, onebest=0.5688, onebestAvg=0.6037, lr=0.01000]       Train:   7%|▋         | 21/291 [00:06<01:20,  3.34it/s, allarc=0.5688, allarcAvg=0.6037, onebest=0.5688, onebestAvg=0.6037, lr=0.01000]       Train:   7%|▋         | 21/291 [00:06<01:23,  3.25it/s, allarc=0.5688, allarcAvg=0.6037, onebest=0.5688, onebestAvg=0.6037, lr=0.01000]       Train:   7%|▋         | 21/291 [00:06<01:23,  3.24it/s, allarc=0.5646, allarcAvg=0.6018, onebest=0.5646, onebestAvg=0.6018, lr=0.01000]       Train:   8%|▊         | 22/291 [00:06<01:19,  3.40it/s, allarc=0.5646, allarcAvg=0.6018, onebest=0.5646, onebestAvg=0.6018, lr=0.01000]       Train:   8%|▊         | 22/291 [00:06<01:21,  3.29it/s, allarc=0.5646, allarcAvg=0.6018, onebest=0.5646, onebestAvg=0.6018, lr=0.01000]       Train:   8%|▊         | 22/291 [00:06<01:21,  3.29it/s, allarc=0.5119, allarcAvg=0.5979, onebest=0.5119, onebestAvg=0.5979, lr=0.01000]       Train:   8%|▊         | 23/291 [00:06<01:17,  3.44it/s, allarc=0.5119, allarcAvg=0.5979, onebest=0.5119, onebestAvg=0.5979, lr=0.01000]       Train:   8%|▊         | 23/291 [00:07<01:22,  3.27it/s, allarc=0.5119, allarcAvg=0.5979, onebest=0.5119, onebestAvg=0.5979, lr=0.01000]       Train:   8%|▊         | 23/291 [00:07<01:22,  3.27it/s, allarc=0.4679, allarcAvg=0.5920, onebest=0.4679, onebestAvg=0.5920, lr=0.01000]       Train:   8%|▊         | 24/291 [00:07<01:18,  3.41it/s, allarc=0.4679, allarcAvg=0.5920, onebest=0.4679, onebestAvg=0.5920, lr=0.01000]       Train:   8%|▊         | 24/291 [00:07<01:21,  3.28it/s, allarc=0.4679, allarcAvg=0.5920, onebest=0.4679, onebestAvg=0.5920, lr=0.01000]       Train:   8%|▊         | 24/291 [00:07<01:21,  3.28it/s, allarc=0.3956, allarcAvg=0.5850, onebest=0.3956, onebestAvg=0.5850, lr=0.01000]       Train:   9%|▊         | 25/291 [00:07<01:17,  3.41it/s, allarc=0.3956, allarcAvg=0.5850, onebest=0.3956, onebestAvg=0.5850, lr=0.01000]       Train:   9%|▊         | 25/291 [00:07<01:21,  3.26it/s, allarc=0.3956, allarcAvg=0.5850, onebest=0.3956, onebestAvg=0.5850, lr=0.01000]       Train:   9%|▊         | 25/291 [00:07<01:21,  3.26it/s, allarc=0.5000, allarcAvg=0.5815, onebest=0.5000, onebestAvg=0.5815, lr=0.01000]       Train:   9%|▉         | 26/291 [00:07<01:18,  3.39it/s, allarc=0.5000, allarcAvg=0.5815, onebest=0.5000, onebestAvg=0.5815, lr=0.01000]       Train:   9%|▉         | 26/291 [00:07<01:20,  3.30it/s, allarc=0.5000, allarcAvg=0.5815, onebest=0.5000, onebestAvg=0.5815, lr=0.01000]       Train:   9%|▉         | 26/291 [00:07<01:20,  3.30it/s, allarc=0.6020, allarcAvg=0.5822, onebest=0.6020, onebestAvg=0.5822, lr=0.01000]       Train:   9%|▉         | 27/291 [00:07<01:16,  3.43it/s, allarc=0.6020, allarcAvg=0.5822, onebest=0.6020, onebestAvg=0.5822, lr=0.01000]       Train:   9%|▉         | 27/291 [00:08<01:19,  3.31it/s, allarc=0.6020, allarcAvg=0.5822, onebest=0.6020, onebestAvg=0.5822, lr=0.01000]       Train:   9%|▉         | 27/291 [00:08<01:19,  3.31it/s, allarc=0.5114, allarcAvg=0.5791, onebest=0.5114, onebestAvg=0.5791, lr=0.01000]       Train:  10%|▉         | 28/291 [00:08<01:16,  3.44it/s, allarc=0.5114, allarcAvg=0.5791, onebest=0.5114, onebestAvg=0.5791, lr=0.01000]       Train:  10%|▉         | 28/291 [00:08<01:18,  3.33it/s, allarc=0.5114, allarcAvg=0.5791, onebest=0.5114, onebestAvg=0.5791, lr=0.01000]       Train:  10%|▉         | 28/291 [00:08<01:18,  3.33it/s, allarc=0.4625, allarcAvg=0.5751, onebest=0.4625, onebestAvg=0.5751, lr=0.01000]       Train:  10%|▉         | 29/291 [00:08<01:15,  3.45it/s, allarc=0.4625, allarcAvg=0.5751, onebest=0.4625, onebestAvg=0.5751, lr=0.01000]       Train:  10%|▉         | 29/291 [00:08<01:18,  3.33it/s, allarc=0.4625, allarcAvg=0.5751, onebest=0.4625, onebestAvg=0.5751, lr=0.01000]       Train:  10%|▉         | 29/291 [00:08<01:18,  3.33it/s, allarc=0.5771, allarcAvg=0.5751, onebest=0.5771, onebestAvg=0.5751, lr=0.01000]       Train:  10%|█         | 30/291 [00:08<01:15,  3.45it/s, allarc=0.5771, allarcAvg=0.5751, onebest=0.5771, onebestAvg=0.5751, lr=0.01000]       Train:  10%|█         | 30/291 [00:09<01:18,  3.33it/s, allarc=0.5771, allarcAvg=0.5751, onebest=0.5771, onebestAvg=0.5751, lr=0.01000]       Train:  10%|█         | 30/291 [00:09<01:18,  3.33it/s, allarc=0.5342, allarcAvg=0.5736, onebest=0.5342, onebestAvg=0.5736, lr=0.01000]       Train:  11%|█         | 31/291 [00:09<01:15,  3.44it/s, allarc=0.5342, allarcAvg=0.5736, onebest=0.5342, onebestAvg=0.5736, lr=0.01000]       Train:  11%|█         | 31/291 [00:09<01:18,  3.29it/s, allarc=0.5342, allarcAvg=0.5736, onebest=0.5342, onebestAvg=0.5736, lr=0.01000]       Train:  11%|█         | 31/291 [00:09<01:18,  3.29it/s, allarc=0.6103, allarcAvg=0.5749, onebest=0.6103, onebestAvg=0.5749, lr=0.01000]       Train:  11%|█         | 32/291 [00:09<01:16,  3.40it/s, allarc=0.6103, allarcAvg=0.5749, onebest=0.6103, onebestAvg=0.5749, lr=0.01000]       Train:  11%|█         | 32/291 [00:09<01:18,  3.29it/s, allarc=0.6103, allarcAvg=0.5749, onebest=0.6103, onebestAvg=0.5749, lr=0.01000]       Train:  11%|█         | 32/291 [00:09<01:18,  3.29it/s, allarc=0.4494, allarcAvg=0.5708, onebest=0.4494, onebestAvg=0.5708, lr=0.01000]       Train:  11%|█▏        | 33/291 [00:09<01:16,  3.39it/s, allarc=0.4494, allarcAvg=0.5708, onebest=0.4494, onebestAvg=0.5708, lr=0.01000]       Train:  11%|█▏        | 33/291 [00:10<01:18,  3.28it/s, allarc=0.4494, allarcAvg=0.5708, onebest=0.4494, onebestAvg=0.5708, lr=0.01000]       Train:  11%|█▏        | 33/291 [00:10<01:18,  3.28it/s, allarc=0.4986, allarcAvg=0.5684, onebest=0.4986, onebestAvg=0.5684, lr=0.01000]       Train:  12%|█▏        | 34/291 [00:10<01:16,  3.38it/s, allarc=0.4986, allarcAvg=0.5684, onebest=0.4986, onebestAvg=0.5684, lr=0.01000]       Train:  12%|█▏        | 34/291 [00:10<01:18,  3.28it/s, allarc=0.4986, allarcAvg=0.5684, onebest=0.4986, onebestAvg=0.5684, lr=0.01000]       Train:  12%|█▏        | 34/291 [00:10<01:18,  3.28it/s, allarc=0.5013, allarcAvg=0.5656, onebest=0.5013, onebestAvg=0.5656, lr=0.01000]       Train:  12%|█▏        | 35/291 [00:10<01:15,  3.37it/s, allarc=0.5013, allarcAvg=0.5656, onebest=0.5013, onebestAvg=0.5656, lr=0.01000]       Train:  12%|█▏        | 35/291 [00:10<01:17,  3.30it/s, allarc=0.5013, allarcAvg=0.5656, onebest=0.5013, onebestAvg=0.5656, lr=0.01000]       Train:  12%|█▏        | 35/291 [00:10<01:17,  3.30it/s, allarc=0.4589, allarcAvg=0.5634, onebest=0.4589, onebestAvg=0.5634, lr=0.01000]       Train:  12%|█▏        | 36/291 [00:10<01:15,  3.40it/s, allarc=0.4589, allarcAvg=0.5634, onebest=0.4589, onebestAvg=0.5634, lr=0.01000]       Train:  12%|█▏        | 36/291 [00:10<01:16,  3.33it/s, allarc=0.4589, allarcAvg=0.5634, onebest=0.4589, onebestAvg=0.5634, lr=0.01000]       Train:  12%|█▏        | 36/291 [00:10<01:16,  3.33it/s, allarc=0.5974, allarcAvg=0.5644, onebest=0.5974, onebestAvg=0.5644, lr=0.01000]       Train:  13%|█▎        | 37/291 [00:10<01:14,  3.42it/s, allarc=0.5974, allarcAvg=0.5644, onebest=0.5974, onebestAvg=0.5644, lr=0.01000]       Train:  13%|█▎        | 37/291 [00:11<01:16,  3.31it/s, allarc=0.5974, allarcAvg=0.5644, onebest=0.5974, onebestAvg=0.5644, lr=0.01000]       Train:  13%|█▎        | 37/291 [00:11<01:16,  3.31it/s, allarc=0.5537, allarcAvg=0.5641, onebest=0.5537, onebestAvg=0.5641, lr=0.01000]       Train:  13%|█▎        | 38/291 [00:11<01:14,  3.40it/s, allarc=0.5537, allarcAvg=0.5641, onebest=0.5537, onebestAvg=0.5641, lr=0.01000]       Train:  13%|█▎        | 38/291 [00:11<01:15,  3.33it/s, allarc=0.5537, allarcAvg=0.5641, onebest=0.5537, onebestAvg=0.5641, lr=0.01000]       Train:  13%|█▎        | 38/291 [00:11<01:15,  3.33it/s, allarc=0.4465, allarcAvg=0.5612, onebest=0.4465, onebestAvg=0.5612, lr=0.01000]       Train:  13%|█▎        | 39/291 [00:11<01:13,  3.42it/s, allarc=0.4465, allarcAvg=0.5612, onebest=0.4465, onebestAvg=0.5612, lr=0.01000]       Train:  13%|█▎        | 39/291 [00:11<01:15,  3.34it/s, allarc=0.4465, allarcAvg=0.5612, onebest=0.4465, onebestAvg=0.5612, lr=0.01000]       Train:  13%|█▎        | 39/291 [00:11<01:15,  3.34it/s, allarc=0.4969, allarcAvg=0.5590, onebest=0.4969, onebestAvg=0.5590, lr=0.01000]       Train:  14%|█▎        | 40/291 [00:11<01:13,  3.42it/s, allarc=0.4969, allarcAvg=0.5590, onebest=0.4969, onebestAvg=0.5590, lr=0.01000]       Train:  14%|█▎        | 40/291 [00:11<01:14,  3.35it/s, allarc=0.4969, allarcAvg=0.5590, onebest=0.4969, onebestAvg=0.5590, lr=0.01000]       Train:  14%|█▎        | 40/291 [00:11<01:14,  3.35it/s, allarc=0.4942, allarcAvg=0.5574, onebest=0.4942, onebestAvg=0.5574, lr=0.01000]       Train:  14%|█▍        | 41/291 [00:11<01:12,  3.44it/s, allarc=0.4942, allarcAvg=0.5574, onebest=0.4942, onebestAvg=0.5574, lr=0.01000]       Train:  14%|█▍        | 41/291 [00:12<01:14,  3.37it/s, allarc=0.4942, allarcAvg=0.5574, onebest=0.4942, onebestAvg=0.5574, lr=0.01000]       Train:  14%|█▍        | 41/291 [00:12<01:14,  3.37it/s, allarc=0.5960, allarcAvg=0.5581, onebest=0.5960, onebestAvg=0.5581, lr=0.01000]       Train:  14%|█▍        | 42/291 [00:12<01:12,  3.46it/s, allarc=0.5960, allarcAvg=0.5581, onebest=0.5960, onebestAvg=0.5581, lr=0.01000]       Train:  14%|█▍        | 42/291 [00:12<01:13,  3.37it/s, allarc=0.5960, allarcAvg=0.5581, onebest=0.5960, onebestAvg=0.5581, lr=0.01000]       Train:  14%|█▍        | 42/291 [00:12<01:13,  3.37it/s, allarc=0.4982, allarcAvg=0.5567, onebest=0.4982, onebestAvg=0.5567, lr=0.01000]       Train:  15%|█▍        | 43/291 [00:12<01:11,  3.45it/s, allarc=0.4982, allarcAvg=0.5567, onebest=0.4982, onebestAvg=0.5567, lr=0.01000]       Train:  15%|█▍        | 43/291 [00:12<01:13,  3.38it/s, allarc=0.4982, allarcAvg=0.5567, onebest=0.4982, onebestAvg=0.5567, lr=0.01000]       Train:  15%|█▍        | 43/291 [00:12<01:13,  3.38it/s, allarc=0.5794, allarcAvg=0.5573, onebest=0.5794, onebestAvg=0.5573, lr=0.01000]       Train:  15%|█▌        | 44/291 [00:12<01:11,  3.46it/s, allarc=0.5794, allarcAvg=0.5573, onebest=0.5794, onebestAvg=0.5573, lr=0.01000]       Train:  15%|█▌        | 44/291 [00:12<01:12,  3.41it/s, allarc=0.5794, allarcAvg=0.5573, onebest=0.5794, onebestAvg=0.5573, lr=0.01000]       Train:  15%|█▌        | 44/291 [00:12<01:12,  3.41it/s, allarc=0.3804, allarcAvg=0.5545, onebest=0.3804, onebestAvg=0.5545, lr=0.01000]       Train:  15%|█▌        | 45/291 [00:12<01:10,  3.48it/s, allarc=0.3804, allarcAvg=0.5545, onebest=0.3804, onebestAvg=0.5545, lr=0.01000]       Train:  15%|█▌        | 45/291 [00:13<01:12,  3.38it/s, allarc=0.3804, allarcAvg=0.5545, onebest=0.3804, onebestAvg=0.5545, lr=0.01000]       Train:  15%|█▌        | 45/291 [00:13<01:12,  3.38it/s, allarc=0.5290, allarcAvg=0.5538, onebest=0.5290, onebestAvg=0.5538, lr=0.01000]       Train:  16%|█▌        | 46/291 [00:13<01:10,  3.46it/s, allarc=0.5290, allarcAvg=0.5538, onebest=0.5290, onebestAvg=0.5538, lr=0.01000]       Train:  16%|█▌        | 46/291 [00:13<01:12,  3.38it/s, allarc=0.5290, allarcAvg=0.5538, onebest=0.5290, onebestAvg=0.5538, lr=0.01000]       Train:  16%|█▌        | 46/291 [00:13<01:12,  3.38it/s, allarc=0.5400, allarcAvg=0.5535, onebest=0.5400, onebestAvg=0.5535, lr=0.01000]       Train:  16%|█▌        | 47/291 [00:13<01:10,  3.46it/s, allarc=0.5400, allarcAvg=0.5535, onebest=0.5400, onebestAvg=0.5535, lr=0.01000]       Train:  16%|█▌        | 47/291 [00:13<01:12,  3.37it/s, allarc=0.5400, allarcAvg=0.5535, onebest=0.5400, onebestAvg=0.5535, lr=0.01000]       Train:  16%|█▌        | 47/291 [00:13<01:12,  3.37it/s, allarc=0.4621, allarcAvg=0.5519, onebest=0.4621, onebestAvg=0.5519, lr=0.01000]       Train:  16%|█▋        | 48/291 [00:13<01:10,  3.45it/s, allarc=0.4621, allarcAvg=0.5519, onebest=0.4621, onebestAvg=0.5519, lr=0.01000]       Train:  16%|█▋        | 48/291 [00:14<01:11,  3.39it/s, allarc=0.4621, allarcAvg=0.5519, onebest=0.4621, onebestAvg=0.5519, lr=0.01000]       Train:  16%|█▋        | 48/291 [00:14<01:11,  3.39it/s, allarc=0.5258, allarcAvg=0.5514, onebest=0.5258, onebestAvg=0.5514, lr=0.01000]       Train:  17%|█▋        | 49/291 [00:14<01:09,  3.47it/s, allarc=0.5258, allarcAvg=0.5514, onebest=0.5258, onebestAvg=0.5514, lr=0.01000]       Train:  17%|█▋        | 49/291 [00:14<01:10,  3.42it/s, allarc=0.5258, allarcAvg=0.5514, onebest=0.5258, onebestAvg=0.5514, lr=0.01000]       Train:  17%|█▋        | 49/291 [00:14<01:10,  3.42it/s, allarc=0.4019, allarcAvg=0.5487, onebest=0.4019, onebestAvg=0.5487, lr=0.01000]       Train:  17%|█▋        | 50/291 [00:14<01:09,  3.49it/s, allarc=0.4019, allarcAvg=0.5487, onebest=0.4019, onebestAvg=0.5487, lr=0.01000]       Train:  17%|█▋        | 50/291 [00:14<01:10,  3.40it/s, allarc=0.4019, allarcAvg=0.5487, onebest=0.4019, onebestAvg=0.5487, lr=0.01000]       Train:  17%|█▋        | 50/291 [00:14<01:10,  3.40it/s, allarc=0.5263, allarcAvg=0.5482, onebest=0.5263, onebestAvg=0.5482, lr=0.01000]       Train:  18%|█▊        | 51/291 [00:14<01:09,  3.47it/s, allarc=0.5263, allarcAvg=0.5482, onebest=0.5263, onebestAvg=0.5482, lr=0.01000]       Train:  18%|█▊        | 51/291 [00:15<01:10,  3.38it/s, allarc=0.5263, allarcAvg=0.5482, onebest=0.5263, onebestAvg=0.5482, lr=0.01000]       Train:  18%|█▊        | 51/291 [00:15<01:10,  3.38it/s, allarc=0.5112, allarcAvg=0.5472, onebest=0.5112, onebestAvg=0.5472, lr=0.01000]       Train:  18%|█▊        | 52/291 [00:15<01:09,  3.45it/s, allarc=0.5112, allarcAvg=0.5472, onebest=0.5112, onebestAvg=0.5472, lr=0.01000]       Train:  18%|█▊        | 52/291 [00:15<01:10,  3.40it/s, allarc=0.5112, allarcAvg=0.5472, onebest=0.5112, onebestAvg=0.5472, lr=0.01000]       Train:  18%|█▊        | 52/291 [00:15<01:10,  3.40it/s, allarc=0.4447, allarcAvg=0.5458, onebest=0.4447, onebestAvg=0.5458, lr=0.01000]       Train:  18%|█▊        | 53/291 [00:15<01:08,  3.46it/s, allarc=0.4447, allarcAvg=0.5458, onebest=0.4447, onebestAvg=0.5458, lr=0.01000]       Train:  18%|█▊        | 53/291 [00:15<01:09,  3.40it/s, allarc=0.4447, allarcAvg=0.5458, onebest=0.4447, onebestAvg=0.5458, lr=0.01000]       Train:  18%|█▊        | 53/291 [00:15<01:09,  3.40it/s, allarc=0.4525, allarcAvg=0.5440, onebest=0.4525, onebestAvg=0.5440, lr=0.01000]       Train:  19%|█▊        | 54/291 [00:15<01:08,  3.47it/s, allarc=0.4525, allarcAvg=0.5440, onebest=0.4525, onebestAvg=0.5440, lr=0.01000]       Train:  19%|█▊        | 54/291 [00:16<01:10,  3.37it/s, allarc=0.4525, allarcAvg=0.5440, onebest=0.4525, onebestAvg=0.5440, lr=0.01000]       Train:  19%|█▊        | 54/291 [00:16<01:10,  3.37it/s, allarc=0.5680, allarcAvg=0.5445, onebest=0.5680, onebestAvg=0.5445, lr=0.01000]       Train:  19%|█▉        | 55/291 [00:16<01:08,  3.43it/s, allarc=0.5680, allarcAvg=0.5445, onebest=0.5680, onebestAvg=0.5445, lr=0.01000]       Train:  19%|█▉        | 55/291 [00:16<01:10,  3.36it/s, allarc=0.5680, allarcAvg=0.5445, onebest=0.5680, onebestAvg=0.5445, lr=0.01000]       Train:  19%|█▉        | 55/291 [00:16<01:10,  3.36it/s, allarc=0.4904, allarcAvg=0.5435, onebest=0.4904, onebestAvg=0.5435, lr=0.01000]       Train:  19%|█▉        | 56/291 [00:16<01:08,  3.42it/s, allarc=0.4904, allarcAvg=0.5435, onebest=0.4904, onebestAvg=0.5435, lr=0.01000]       Train:  19%|█▉        | 56/291 [00:16<01:09,  3.36it/s, allarc=0.4904, allarcAvg=0.5435, onebest=0.4904, onebestAvg=0.5435, lr=0.01000]       Train:  19%|█▉        | 56/291 [00:16<01:09,  3.36it/s, allarc=0.5600, allarcAvg=0.5439, onebest=0.5600, onebestAvg=0.5439, lr=0.01000]       Train:  20%|█▉        | 57/291 [00:16<01:08,  3.42it/s, allarc=0.5600, allarcAvg=0.5439, onebest=0.5600, onebestAvg=0.5439, lr=0.01000]       Train:  20%|█▉        | 57/291 [00:16<01:09,  3.38it/s, allarc=0.5600, allarcAvg=0.5439, onebest=0.5600, onebestAvg=0.5439, lr=0.01000]       Train:  20%|█▉        | 57/291 [00:16<01:09,  3.38it/s, allarc=0.6128, allarcAvg=0.5447, onebest=0.6128, onebestAvg=0.5447, lr=0.01000]       Train:  20%|█▉        | 58/291 [00:16<01:07,  3.44it/s, allarc=0.6128, allarcAvg=0.5447, onebest=0.6128, onebestAvg=0.5447, lr=0.01000]       Train:  20%|█▉        | 58/291 [00:17<01:08,  3.40it/s, allarc=0.6128, allarcAvg=0.5447, onebest=0.6128, onebestAvg=0.5447, lr=0.01000]       Train:  20%|█▉        | 58/291 [00:17<01:08,  3.40it/s, allarc=0.3884, allarcAvg=0.5426, onebest=0.3884, onebestAvg=0.5426, lr=0.01000]       Train:  20%|██        | 59/291 [00:17<01:07,  3.46it/s, allarc=0.3884, allarcAvg=0.5426, onebest=0.3884, onebestAvg=0.5426, lr=0.01000]       Train:  20%|██        | 59/291 [00:17<01:08,  3.40it/s, allarc=0.3884, allarcAvg=0.5426, onebest=0.3884, onebestAvg=0.5426, lr=0.01000]       Train:  20%|██        | 59/291 [00:17<01:08,  3.40it/s, allarc=0.5467, allarcAvg=0.5426, onebest=0.5467, onebestAvg=0.5426, lr=0.01000]       Train:  21%|██        | 60/291 [00:17<01:06,  3.45it/s, allarc=0.5467, allarcAvg=0.5426, onebest=0.5467, onebestAvg=0.5426, lr=0.01000]       Train:  21%|██        | 60/291 [00:17<01:07,  3.41it/s, allarc=0.5467, allarcAvg=0.5426, onebest=0.5467, onebestAvg=0.5426, lr=0.01000]       Train:  21%|██        | 60/291 [00:17<01:07,  3.41it/s, allarc=0.5266, allarcAvg=0.5423, onebest=0.5266, onebestAvg=0.5423, lr=0.01000]       Train:  21%|██        | 61/291 [00:17<01:06,  3.47it/s, allarc=0.5266, allarcAvg=0.5423, onebest=0.5266, onebestAvg=0.5423, lr=0.01000]       Train:  21%|██        | 61/291 [00:17<01:07,  3.41it/s, allarc=0.5266, allarcAvg=0.5423, onebest=0.5266, onebestAvg=0.5423, lr=0.01000]       Train:  21%|██        | 61/291 [00:17<01:07,  3.41it/s, allarc=0.4997, allarcAvg=0.5416, onebest=0.4997, onebestAvg=0.5416, lr=0.01000]       Train:  21%|██▏       | 62/291 [00:17<01:05,  3.47it/s, allarc=0.4997, allarcAvg=0.5416, onebest=0.4997, onebestAvg=0.5416, lr=0.01000]       Train:  21%|██▏       | 62/291 [00:18<01:06,  3.44it/s, allarc=0.4997, allarcAvg=0.5416, onebest=0.4997, onebestAvg=0.5416, lr=0.01000]       Train:  21%|██▏       | 62/291 [00:18<01:06,  3.44it/s, allarc=0.4728, allarcAvg=0.5409, onebest=0.4728, onebestAvg=0.5409, lr=0.01000]       Train:  22%|██▏       | 63/291 [00:18<01:05,  3.49it/s, allarc=0.4728, allarcAvg=0.5409, onebest=0.4728, onebestAvg=0.5409, lr=0.01000]       Train:  22%|██▏       | 63/291 [00:18<01:06,  3.44it/s, allarc=0.4728, allarcAvg=0.5409, onebest=0.4728, onebestAvg=0.5409, lr=0.01000]       Train:  22%|██▏       | 63/291 [00:18<01:06,  3.44it/s, allarc=0.4697, allarcAvg=0.5401, onebest=0.4697, onebestAvg=0.5401, lr=0.01000]       Train:  22%|██▏       | 64/291 [00:18<01:04,  3.49it/s, allarc=0.4697, allarcAvg=0.5401, onebest=0.4697, onebestAvg=0.5401, lr=0.01000]       Train:  22%|██▏       | 64/291 [00:18<01:06,  3.43it/s, allarc=0.4697, allarcAvg=0.5401, onebest=0.4697, onebestAvg=0.5401, lr=0.01000]       Train:  22%|██▏       | 64/291 [00:18<01:06,  3.43it/s, allarc=0.4654, allarcAvg=0.5388, onebest=0.4654, onebestAvg=0.5388, lr=0.01000]       Train:  22%|██▏       | 65/291 [00:18<01:04,  3.48it/s, allarc=0.4654, allarcAvg=0.5388, onebest=0.4654, onebestAvg=0.5388, lr=0.01000]       Train:  22%|██▏       | 65/291 [00:18<01:05,  3.44it/s, allarc=0.4654, allarcAvg=0.5388, onebest=0.4654, onebestAvg=0.5388, lr=0.01000]       Train:  22%|██▏       | 65/291 [00:18<01:05,  3.44it/s, allarc=0.4894, allarcAvg=0.5381, onebest=0.4894, onebestAvg=0.5381, lr=0.01000]       Train:  23%|██▎       | 66/291 [00:18<01:04,  3.49it/s, allarc=0.4894, allarcAvg=0.5381, onebest=0.4894, onebestAvg=0.5381, lr=0.01000]       Train:  23%|██▎       | 66/291 [00:19<01:05,  3.46it/s, allarc=0.4894, allarcAvg=0.5381, onebest=0.4894, onebestAvg=0.5381, lr=0.01000]       Train:  23%|██▎       | 66/291 [00:19<01:05,  3.46it/s, allarc=0.4461, allarcAvg=0.5369, onebest=0.4461, onebestAvg=0.5369, lr=0.01000]       Train:  23%|██▎       | 67/291 [00:19<01:03,  3.51it/s, allarc=0.4461, allarcAvg=0.5369, onebest=0.4461, onebestAvg=0.5369, lr=0.01000]       Train:  23%|██▎       | 67/291 [00:19<01:04,  3.46it/s, allarc=0.4461, allarcAvg=0.5369, onebest=0.4461, onebestAvg=0.5369, lr=0.01000]       Train:  23%|██▎       | 67/291 [00:19<01:04,  3.46it/s, allarc=0.4861, allarcAvg=0.5361, onebest=0.4861, onebestAvg=0.5361, lr=0.01000]       Train:  23%|██▎       | 68/291 [00:19<01:03,  3.51it/s, allarc=0.4861, allarcAvg=0.5361, onebest=0.4861, onebestAvg=0.5361, lr=0.01000]       Train:  23%|██▎       | 68/291 [00:19<01:04,  3.47it/s, allarc=0.4861, allarcAvg=0.5361, onebest=0.4861, onebestAvg=0.5361, lr=0.01000]       Train:  23%|██▎       | 68/291 [00:19<01:04,  3.47it/s, allarc=0.4682, allarcAvg=0.5352, onebest=0.4682, onebestAvg=0.5352, lr=0.01000]       Train:  24%|██▎       | 69/291 [00:19<01:03,  3.52it/s, allarc=0.4682, allarcAvg=0.5352, onebest=0.4682, onebestAvg=0.5352, lr=0.01000]       Train:  24%|██▎       | 69/291 [00:20<01:04,  3.45it/s, allarc=0.4682, allarcAvg=0.5352, onebest=0.4682, onebestAvg=0.5352, lr=0.01000]       Train:  24%|██▎       | 69/291 [00:20<01:04,  3.45it/s, allarc=0.5581, allarcAvg=0.5356, onebest=0.5581, onebestAvg=0.5356, lr=0.01000]       Train:  24%|██▍       | 70/291 [00:20<01:03,  3.50it/s, allarc=0.5581, allarcAvg=0.5356, onebest=0.5581, onebestAvg=0.5356, lr=0.01000]       Train:  24%|██▍       | 70/291 [00:20<01:03,  3.46it/s, allarc=0.5581, allarcAvg=0.5356, onebest=0.5581, onebestAvg=0.5356, lr=0.01000]       Train:  24%|██▍       | 70/291 [00:20<01:03,  3.46it/s, allarc=0.4487, allarcAvg=0.5344, onebest=0.4487, onebestAvg=0.5344, lr=0.01000]       Train:  24%|██▍       | 71/291 [00:20<01:02,  3.51it/s, allarc=0.4487, allarcAvg=0.5344, onebest=0.4487, onebestAvg=0.5344, lr=0.01000]       Train:  24%|██▍       | 71/291 [00:20<01:03,  3.47it/s, allarc=0.4487, allarcAvg=0.5344, onebest=0.4487, onebestAvg=0.5344, lr=0.01000]       Train:  24%|██▍       | 71/291 [00:20<01:03,  3.47it/s, allarc=0.4684, allarcAvg=0.5335, onebest=0.4684, onebestAvg=0.5335, lr=0.01000]       Train:  25%|██▍       | 72/291 [00:20<01:02,  3.52it/s, allarc=0.4684, allarcAvg=0.5335, onebest=0.4684, onebestAvg=0.5335, lr=0.01000]       Train:  25%|██▍       | 72/291 [00:20<01:03,  3.48it/s, allarc=0.4684, allarcAvg=0.5335, onebest=0.4684, onebestAvg=0.5335, lr=0.01000]       Train:  25%|██▍       | 72/291 [00:20<01:03,  3.48it/s, allarc=0.4676, allarcAvg=0.5324, onebest=0.4676, onebestAvg=0.5324, lr=0.01000]       Train:  25%|██▌       | 73/291 [00:20<01:01,  3.52it/s, allarc=0.4676, allarcAvg=0.5324, onebest=0.4676, onebestAvg=0.5324, lr=0.01000]       Train:  25%|██▌       | 73/291 [00:20<01:02,  3.48it/s, allarc=0.4676, allarcAvg=0.5324, onebest=0.4676, onebestAvg=0.5324, lr=0.01000]       Train:  25%|██▌       | 73/291 [00:20<01:02,  3.48it/s, allarc=0.3545, allarcAvg=0.5301, onebest=0.3545, onebestAvg=0.5301, lr=0.01000]       Train:  25%|██▌       | 74/291 [00:20<01:01,  3.53it/s, allarc=0.3545, allarcAvg=0.5301, onebest=0.3545, onebestAvg=0.5301, lr=0.01000]       Train:  25%|██▌       | 74/291 [00:21<01:02,  3.48it/s, allarc=0.3545, allarcAvg=0.5301, onebest=0.3545, onebestAvg=0.5301, lr=0.01000]       Train:  25%|██▌       | 74/291 [00:21<01:02,  3.48it/s, allarc=0.6040, allarcAvg=0.5311, onebest=0.6040, onebestAvg=0.5311, lr=0.01000]       Train:  26%|██▌       | 75/291 [00:21<01:01,  3.53it/s, allarc=0.6040, allarcAvg=0.5311, onebest=0.6040, onebestAvg=0.5311, lr=0.01000]       Train:  26%|██▌       | 75/291 [00:21<01:01,  3.49it/s, allarc=0.6040, allarcAvg=0.5311, onebest=0.6040, onebestAvg=0.5311, lr=0.01000]       Train:  26%|██▌       | 75/291 [00:21<01:01,  3.49it/s, allarc=0.5336, allarcAvg=0.5311, onebest=0.5336, onebestAvg=0.5311, lr=0.01000]       Train:  26%|██▌       | 76/291 [00:21<01:00,  3.53it/s, allarc=0.5336, allarcAvg=0.5311, onebest=0.5336, onebestAvg=0.5311, lr=0.01000]       Train:  26%|██▌       | 76/291 [00:21<01:01,  3.49it/s, allarc=0.5336, allarcAvg=0.5311, onebest=0.5336, onebestAvg=0.5311, lr=0.01000]       Train:  26%|██▌       | 76/291 [00:21<01:01,  3.49it/s, allarc=0.5673, allarcAvg=0.5316, onebest=0.5673, onebestAvg=0.5316, lr=0.01000]       Train:  26%|██▋       | 77/291 [00:21<01:00,  3.53it/s, allarc=0.5673, allarcAvg=0.5316, onebest=0.5673, onebestAvg=0.5316, lr=0.01000]       Train:  26%|██▋       | 77/291 [00:21<01:01,  3.50it/s, allarc=0.5673, allarcAvg=0.5316, onebest=0.5673, onebestAvg=0.5316, lr=0.01000]       Train:  26%|██▋       | 77/291 [00:21<01:01,  3.50it/s, allarc=0.4605, allarcAvg=0.5308, onebest=0.4605, onebestAvg=0.5308, lr=0.01000]       Train:  27%|██▋       | 78/291 [00:21<01:00,  3.55it/s, allarc=0.4605, allarcAvg=0.5308, onebest=0.4605, onebestAvg=0.5308, lr=0.01000]       Train:  27%|██▋       | 78/291 [00:22<01:00,  3.52it/s, allarc=0.4605, allarcAvg=0.5308, onebest=0.4605, onebestAvg=0.5308, lr=0.01000]       Train:  27%|██▋       | 78/291 [00:22<01:00,  3.52it/s, allarc=0.5729, allarcAvg=0.5313, onebest=0.5729, onebestAvg=0.5313, lr=0.01000]       Train:  27%|██▋       | 79/291 [00:22<00:59,  3.56it/s, allarc=0.5729, allarcAvg=0.5313, onebest=0.5729, onebestAvg=0.5313, lr=0.01000]       Train:  27%|██▋       | 79/291 [00:22<01:00,  3.50it/s, allarc=0.5729, allarcAvg=0.5313, onebest=0.5729, onebestAvg=0.5313, lr=0.01000]       Train:  27%|██▋       | 79/291 [00:22<01:00,  3.50it/s, allarc=0.5345, allarcAvg=0.5313, onebest=0.5345, onebestAvg=0.5313, lr=0.01000]       Train:  27%|██▋       | 80/291 [00:22<00:59,  3.54it/s, allarc=0.5345, allarcAvg=0.5313, onebest=0.5345, onebestAvg=0.5313, lr=0.01000]       Train:  27%|██▋       | 80/291 [00:22<01:00,  3.50it/s, allarc=0.5345, allarcAvg=0.5313, onebest=0.5345, onebestAvg=0.5313, lr=0.01000]       Train:  27%|██▋       | 80/291 [00:22<01:00,  3.50it/s, allarc=0.4205, allarcAvg=0.5304, onebest=0.4205, onebestAvg=0.5304, lr=0.01000]       Train:  28%|██▊       | 81/291 [00:22<00:59,  3.55it/s, allarc=0.4205, allarcAvg=0.5304, onebest=0.4205, onebestAvg=0.5304, lr=0.01000]       Train:  28%|██▊       | 81/291 [00:23<01:00,  3.49it/s, allarc=0.4205, allarcAvg=0.5304, onebest=0.4205, onebestAvg=0.5304, lr=0.01000]       Train:  28%|██▊       | 81/291 [00:23<01:00,  3.49it/s, allarc=0.5074, allarcAvg=0.5301, onebest=0.5074, onebestAvg=0.5301, lr=0.01000]       Train:  28%|██▊       | 82/291 [00:23<00:59,  3.53it/s, allarc=0.5074, allarcAvg=0.5301, onebest=0.5074, onebestAvg=0.5301, lr=0.01000]       Train:  28%|██▊       | 82/291 [00:23<01:00,  3.47it/s, allarc=0.5074, allarcAvg=0.5301, onebest=0.5074, onebestAvg=0.5301, lr=0.01000]       Train:  28%|██▊       | 82/291 [00:23<01:00,  3.47it/s, allarc=0.3542, allarcAvg=0.5278, onebest=0.3542, onebestAvg=0.5278, lr=0.01000]       Train:  29%|██▊       | 83/291 [00:23<00:59,  3.51it/s, allarc=0.3542, allarcAvg=0.5278, onebest=0.3542, onebestAvg=0.5278, lr=0.01000]       Train:  29%|██▊       | 83/291 [00:24<01:00,  3.46it/s, allarc=0.3542, allarcAvg=0.5278, onebest=0.3542, onebestAvg=0.5278, lr=0.01000]       Train:  29%|██▊       | 83/291 [00:24<01:00,  3.46it/s, allarc=0.3645, allarcAvg=0.5260, onebest=0.3645, onebestAvg=0.5260, lr=0.01000]       Train:  29%|██▉       | 84/291 [00:24<00:59,  3.50it/s, allarc=0.3645, allarcAvg=0.5260, onebest=0.3645, onebestAvg=0.5260, lr=0.01000]       Train:  29%|██▉       | 84/291 [00:24<00:59,  3.46it/s, allarc=0.3645, allarcAvg=0.5260, onebest=0.3645, onebestAvg=0.5260, lr=0.01000]       Train:  29%|██▉       | 84/291 [00:24<00:59,  3.46it/s, allarc=0.4955, allarcAvg=0.5257, onebest=0.4955, onebestAvg=0.5257, lr=0.01000]       Train:  29%|██▉       | 85/291 [00:24<00:58,  3.50it/s, allarc=0.4955, allarcAvg=0.5257, onebest=0.4955, onebestAvg=0.5257, lr=0.01000]       Train:  29%|██▉       | 85/291 [00:24<00:59,  3.46it/s, allarc=0.4955, allarcAvg=0.5257, onebest=0.4955, onebestAvg=0.5257, lr=0.01000]       Train:  29%|██▉       | 85/291 [00:24<00:59,  3.46it/s, allarc=0.5205, allarcAvg=0.5256, onebest=0.5205, onebestAvg=0.5256, lr=0.01000]       Train:  30%|██▉       | 86/291 [00:24<00:58,  3.50it/s, allarc=0.5205, allarcAvg=0.5256, onebest=0.5205, onebestAvg=0.5256, lr=0.01000]       Train:  30%|██▉       | 86/291 [00:24<00:59,  3.47it/s, allarc=0.5205, allarcAvg=0.5256, onebest=0.5205, onebestAvg=0.5256, lr=0.01000]       Train:  30%|██▉       | 86/291 [00:24<00:59,  3.47it/s, allarc=0.5086, allarcAvg=0.5254, onebest=0.5086, onebestAvg=0.5254, lr=0.01000]       Train:  30%|██▉       | 87/291 [00:24<00:58,  3.51it/s, allarc=0.5086, allarcAvg=0.5254, onebest=0.5086, onebestAvg=0.5254, lr=0.01000]       Train:  30%|██▉       | 87/291 [00:24<00:58,  3.48it/s, allarc=0.5086, allarcAvg=0.5254, onebest=0.5086, onebestAvg=0.5254, lr=0.01000]       Train:  30%|██▉       | 87/291 [00:24<00:58,  3.48it/s, allarc=0.4814, allarcAvg=0.5249, onebest=0.4814, onebestAvg=0.5249, lr=0.01000]       Train:  30%|███       | 88/291 [00:24<00:57,  3.52it/s, allarc=0.4814, allarcAvg=0.5249, onebest=0.4814, onebestAvg=0.5249, lr=0.01000]       Train:  30%|███       | 88/291 [00:25<00:58,  3.49it/s, allarc=0.4814, allarcAvg=0.5249, onebest=0.4814, onebestAvg=0.5249, lr=0.01000]       Train:  30%|███       | 88/291 [00:25<00:58,  3.49it/s, allarc=0.5521, allarcAvg=0.5252, onebest=0.5521, onebestAvg=0.5252, lr=0.01000]       Train:  31%|███       | 89/291 [00:25<00:57,  3.53it/s, allarc=0.5521, allarcAvg=0.5252, onebest=0.5521, onebestAvg=0.5252, lr=0.01000]       Train:  31%|███       | 89/291 [00:25<00:57,  3.49it/s, allarc=0.5521, allarcAvg=0.5252, onebest=0.5521, onebestAvg=0.5252, lr=0.01000]       Train:  31%|███       | 89/291 [00:25<00:57,  3.49it/s, allarc=0.6356, allarcAvg=0.5262, onebest=0.6356, onebestAvg=0.5262, lr=0.01000]       Train:  31%|███       | 90/291 [00:25<00:56,  3.53it/s, allarc=0.6356, allarcAvg=0.5262, onebest=0.6356, onebestAvg=0.5262, lr=0.01000]       Train:  31%|███       | 90/291 [00:25<00:57,  3.50it/s, allarc=0.6356, allarcAvg=0.5262, onebest=0.6356, onebestAvg=0.5262, lr=0.01000]       Train:  31%|███       | 90/291 [00:25<00:57,  3.50it/s, allarc=0.3766, allarcAvg=0.5248, onebest=0.3766, onebestAvg=0.5248, lr=0.01000]       Train:  31%|███▏      | 91/291 [00:25<00:56,  3.53it/s, allarc=0.3766, allarcAvg=0.5248, onebest=0.3766, onebestAvg=0.5248, lr=0.01000]       Train:  31%|███▏      | 91/291 [00:26<00:57,  3.49it/s, allarc=0.3766, allarcAvg=0.5248, onebest=0.3766, onebestAvg=0.5248, lr=0.01000]       Train:  31%|███▏      | 91/291 [00:26<00:57,  3.49it/s, allarc=0.5204, allarcAvg=0.5247, onebest=0.5204, onebestAvg=0.5247, lr=0.01000]       Train:  32%|███▏      | 92/291 [00:26<00:56,  3.52it/s, allarc=0.5204, allarcAvg=0.5247, onebest=0.5204, onebestAvg=0.5247, lr=0.01000]       Train:  32%|███▏      | 92/291 [00:26<00:57,  3.49it/s, allarc=0.5204, allarcAvg=0.5247, onebest=0.5204, onebestAvg=0.5247, lr=0.01000]       Train:  32%|███▏      | 92/291 [00:26<00:57,  3.49it/s, allarc=0.4278, allarcAvg=0.5237, onebest=0.4278, onebestAvg=0.5237, lr=0.01000]       Train:  32%|███▏      | 93/291 [00:26<00:56,  3.53it/s, allarc=0.4278, allarcAvg=0.5237, onebest=0.4278, onebestAvg=0.5237, lr=0.01000]       Train:  32%|███▏      | 93/291 [00:26<00:56,  3.50it/s, allarc=0.4278, allarcAvg=0.5237, onebest=0.4278, onebestAvg=0.5237, lr=0.01000]       Train:  32%|███▏      | 93/291 [00:26<00:56,  3.50it/s, allarc=0.4453, allarcAvg=0.5229, onebest=0.4453, onebestAvg=0.5229, lr=0.01000]       Train:  32%|███▏      | 94/291 [00:26<00:55,  3.54it/s, allarc=0.4453, allarcAvg=0.5229, onebest=0.4453, onebestAvg=0.5229, lr=0.01000]       Train:  32%|███▏      | 94/291 [00:27<00:56,  3.48it/s, allarc=0.4453, allarcAvg=0.5229, onebest=0.4453, onebestAvg=0.5229, lr=0.01000]       Train:  32%|███▏      | 94/291 [00:27<00:56,  3.48it/s, allarc=0.4648, allarcAvg=0.5223, onebest=0.4648, onebestAvg=0.5223, lr=0.01000]       Train:  33%|███▎      | 95/291 [00:27<00:55,  3.52it/s, allarc=0.4648, allarcAvg=0.5223, onebest=0.4648, onebestAvg=0.5223, lr=0.01000]       Train:  33%|███▎      | 95/291 [00:27<00:56,  3.47it/s, allarc=0.4648, allarcAvg=0.5223, onebest=0.4648, onebestAvg=0.5223, lr=0.01000]       Train:  33%|███▎      | 95/291 [00:27<00:56,  3.47it/s, allarc=0.4949, allarcAvg=0.5219, onebest=0.4949, onebestAvg=0.5219, lr=0.01000]       Train:  33%|███▎      | 96/291 [00:27<00:55,  3.51it/s, allarc=0.4949, allarcAvg=0.5219, onebest=0.4949, onebestAvg=0.5219, lr=0.01000]       Train:  33%|███▎      | 96/291 [00:27<00:56,  3.48it/s, allarc=0.4949, allarcAvg=0.5219, onebest=0.4949, onebestAvg=0.5219, lr=0.01000]       Train:  33%|███▎      | 96/291 [00:27<00:56,  3.48it/s, allarc=0.4860, allarcAvg=0.5216, onebest=0.4860, onebestAvg=0.5216, lr=0.01000]       Train:  33%|███▎      | 97/291 [00:27<00:55,  3.51it/s, allarc=0.4860, allarcAvg=0.5216, onebest=0.4860, onebestAvg=0.5216, lr=0.01000]       Train:  33%|███▎      | 97/291 [00:27<00:55,  3.47it/s, allarc=0.4860, allarcAvg=0.5216, onebest=0.4860, onebestAvg=0.5216, lr=0.01000]       Train:  33%|███▎      | 97/291 [00:27<00:55,  3.47it/s, allarc=0.5194, allarcAvg=0.5216, onebest=0.5194, onebestAvg=0.5216, lr=0.01000]       Train:  34%|███▎      | 98/291 [00:27<00:55,  3.50it/s, allarc=0.5194, allarcAvg=0.5216, onebest=0.5194, onebestAvg=0.5216, lr=0.01000]

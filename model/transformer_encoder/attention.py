@@ -81,7 +81,7 @@ class Attention(torch.nn.Module):
         alpha = F.softmax(attn_energies, dim=1)
 
         # The context is the result of the weighted summation
-        context = torch.bmm(alpha, value)
+        context = torch.mm(alpha, value)
 
         return context
 
