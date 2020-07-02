@@ -1,12 +1,26 @@
-# Attention mechansim for Confidence Score Estimation
+# An Attention-Based Model over Lattices for Confidence Score Estimation
 ### Uncertainty and confidence scores in sequence data
 
-This repo provides mechanisms for subword level information to be introduced into an attention mechanism. It is able to operate on DAG-like structures such as lattice and confusion networks. In this source code, we use this framework to generate confidence score estimates for each word in the  lattice, confusion network or 1-best list. This is incredibly useful for automatic speech recognition (ASR) applications such as information retrieval, deletion detection, and machine translation. An improvement in Normalised Cross Entropy (NCE) and AUC (Precision-Recall) compared to the traditional word posterior confidence score estimate is achievable. 
-
-These results were generated on the CUED graphemic Georgian ASR system which was trained on the Georgian language pack from the BABEL project.
+This repo provides mechanisms for subword level information to be introduced into an attention mechanism. It is able to operate on DAG-like structures such as lattice and confusion networks. In this source code, we use this framework to generate confidence score estimates for each word in the lattice, confusion network or 1-best list. This is incredibly useful for automatic speech recognition (ASR) applications such as information retrieval, deletion detection, and machine translation. 
 
 
-This work is an extension of Bi-Directional Lattice Recurrent Neural Networks for Confidence Estimation as documented in:
+The predicted confidence scores were generated for the CUED graphemic Georgian ASR system which was trained on the Georgian language pack from the BABEL project. The attention-based model was compared to the traditional word posterior confidence score estimate and a bi-directional lattice recurrent neural network for confidence estimation which is used as the current best performing confidence model for the CUED graphemic Georgian ASR system. The attention-based model shows an improvement in Normalised Cross Entropy (NCE) and AUC (Precision-Recall) compared to both models while being more deeply parellisable and less computationally expensive than the LatticeRNN.
+
+This work is an extension of Bi-Directional Lattice Recurrent Neural Networks for Confidence Estimation as documented in: 
+
+>[Bi-Directional Lattice Recurrent Neural Networks for Confidence Estimation](https://arxiv.org/abs/1810.13024)
+>
+>*Qiujia Li\*, Preben Ness\*, Anton Ragni, Mark Gales* (\* indicates equal contribution)
+>
+>Submitted to ICASSP 2019
+
+The attention-based model uses one or more (multi-head) attention mechanisms that each attend over a set of arcs taken from the lattice/confusion network/one-best sequence. For details on the attention-based model, please refer to my thesis []. The attention-based model outperforms the LatticeRNN in NCE and AUC (Precision-Recall), where the precision recall curves are shown below.
+
+one-best paths                  |  lattices
+:------------------------------:|:------------------------------:
+![onebest](fig/pr_onebest.png)  |  ![lattice](fig/pr_lattice.png)
+
+For more details on BiLatRNN, please refer to the [paper](https://arxiv.org/pdf/1810.13024.pdf) or the [thesis](http://liqiujia.com/papers/meng_thesis.pdf).
 
 ## Usage
 
